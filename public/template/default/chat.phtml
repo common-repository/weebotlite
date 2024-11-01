@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * Provide a public area view for the support-chat
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+
+	/* 
+	*	get plugin options
+	*/
+	$options = get_option($this->plugin_name,$this->default_options());
+	
+	/* 
+	*	get chat-log
+	*/
+	$logs = $this->user_log(0,$options["chat:messages:limit"]);
+ 
+?>
+
+<div id="weebotLite">
+	<div class="small">
+		<?php esc_attr_e( 'Support-Chat', $this->plugin_name ); ?>
+	</div>
+	<div class="extended">
+		<div class="chat nano">
+			<div class="content nano-content">
+				<?php
+				
+					/* 
+					*	if the chat log is not empty
+					*/
+					if($logs!==false) {
+						$logs = array_reverse($logs);
+						if(count($logs)==$options["chat:messages:limit"]) {
+							?><div class="more" data-start="<?php echo $options["chat:messages:limit"]; ?>"></div><?php
+						}
+						foreach($logs as $log) { 
+							$question = $this->get_question_by_id($log->question);
+							$this->template("chat/question/question",array("question"=>$question,"log"=>$log));
+							if($log->type!=-2) {
+								$this->include_answer($log->question,$log->type);
+							} else {
+								$supporter = $this->get_supporter($question->id);
+								if($supporter===false) {
+									$this->template("chat/answer/fallback",array("options" => $options, "question" => $question->id));
+								}
+							}
+						}
+					} 
+					
+					/* 
+					*	if the chat log is empty
+					*/
+					else {
+						$this->template("chat/welcome",array("options" => $options));
+					}
+					
+				?>
+			</div>
+		</div>
+		<?php
+			$this->template("chat/settings");
+		?>
+		<textarea rows="1" cols="1" placeholder="<?php esc_attr_e( 'Write a reply...', $this->plugin_name ); ?>"></textarea>
+		<div class="buttons">
+			<div class="button send" data-error="<?php esc_attr_e( 'Your message was blocked!', $this->plugin_name ); ?>" title="<?php esc_attr_e( 'Send', $this->plugin_name ); ?>"></div>
+		</div>
+	</div>
+	<audio class="send">
+	  <source src="<?php echo str_replace("template/default/","",plugin_dir_url( __FILE__ )); ?>/assets/audio/send.ogg" type="audio/ogg">
+	  <source src="<?php echo str_replace("template/default/","",plugin_dir_url( __FILE__ )); ?>/assets/audio/send.mp3" type="audio/mpeg">
+	</audio>
+	<audio class="income">
+	  <source src="<?php echo str_replace("template/default/","",plugin_dir_url( __FILE__ )); ?>assets/audio/income.ogg" type="audio/ogg">
+	  <source src="<?php echo str_replace("template/default/","",plugin_dir_url( __FILE__ )); ?>assets/audio/income.mp3" type="audio/mpeg">
+	</audio>
+</div>
+<div id="weebotLiteBackground"></div>

@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Provide a public area view for an error message for the support-chat
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+?>
+<div class="answer type-lost lost" id="<?php echo $this->plugin_name."_".$parameter["question"]; ?>_answer">
+	<div class="message"><?php esc_attr_e( 'Something went wrong!', $this->plugin_name ); ?></div>
+</div>

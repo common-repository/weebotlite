@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * Provide a admin view for the "existing answer"-action for answers
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/admin/template
+ */
+
+	/* 
+	*	if no answer was created so far
+	*/
+	if(count($parameter["answers"])==0) {
+		esc_attr_e( 'No answers found', $this->plugin_name );
+	} 
+	
+	/* 
+	*	if there are existing answers
+	*/
+	else {
+		?>
+			<input type="hidden" name="<?php echo $this->plugin_name; ?>[existing]" class="existing" value="-1" />
+			<div id="<?php echo $this->plugin_name; ?>-lookup-answers-list">
+				<?php if(count($parameter["answers"])>10) { ?>
+				<input class="search" placeholder="<?php esc_attr_e( 'Search Results', $this->plugin_name ); ?>" />
+				<span class="sort" data-sort="type"><?php esc_attr_e( 'Sort by type', $this->plugin_name ); ?></span>
+				<span class="sort" data-sort="message"><?php esc_attr_e( 'Sort by message', $this->plugin_name ); ?></span>
+				<?php } ?>
+				<ul class="list">
+				<?php
+					
+					/* 
+					*	list all answers
+					*/
+					foreach($parameter["answers"] as $answer) {
+						?>
+							<li class="answer">
+								<?php 
+									switch($answer->type) {
+										case -1:
+											?><span class="type"><?php esc_attr_e( 'Gossip', $this->plugin_name ); ?></span><?php
+											$action = $answer->action;
+										break;
+										case 0:
+											?><span class="type"><?php esc_attr_e( 'Answer', $this->plugin_name ); ?></span><?php
+											$action = $answer->action;
+										break;
+										case 1:
+											?><span class="type"><?php esc_attr_e( 'Question', $this->plugin_name ); ?></span><?php
+											$action = $answer->action;
+										break;
+										case 2:
+											?><span class="type"><?php esc_attr_e( 'URL', $this->plugin_name ); ?></span><?php
+											$action = $answer->action;
+										break;
+										case 3:
+											?><span class="type"><?php esc_attr_e( 'File', $this->plugin_name ); ?></span><?php
+											$action = $answer->file;
+										break;
+									}
+								?>
+								<span class="message"><?php echo $action; ?></span>
+								<span class="use-existing-answer button" data-id="<?php echo $answer->id; ?>" data-form="<?php echo $parameter["question"]; ?>"><?php esc_attr_e( 'Use this answer', $this->plugin_name ); ?></span>
+							</li>
+						<?php
+						
+					}
+				?>
+				</ul>
+			</div>
+		<?php
+	}
+?>

@@ -1,0 +1,133 @@
+<?php
+
+/**
+ * Provide a admin view for the "edit"-action for answers
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/admin/template
+ */
+ 
+
+/* 
+*	if something was posted
+*/
+if(isset($_POST["{$this->plugin_name}"]["edit"])) {
+
+	/* 
+	*	save changes to answer
+	*/
+	$this->edit_answer();
+	
+	?>
+		<div id="message" class="updated notice notice-success is-dismissible">
+			<p><?php esc_attr_e( 'Event updated', $this->plugin_name ); ?>.</p>
+			<button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php esc_attr_e( 'Dismiss', $this->plugin_name ); ?>.</span></button>
+		</div>
+	<?php
+	
+}
+
+/* 
+*	load event data
+*/
+$event = $this->get_answer_by_id($parameter["event"]);
+
+/* 
+*	load question data
+*/
+$question = $this->get_questions_by_answer($event->id);
+
+/* 
+*	load answer-files
+*/
+$files = $this->get_answer_files();
+
+/* 
+*	load page data
+*/
+$page = $this->get_page_by("id",$question[0]->page);
+
+
+ ?>
+<h2 class="nav-tab-wrapper"><?php esc_attr_e( 'Edit event', $this->plugin_name ); ?></h2>
+<form method="post" action="<?php echo admin_url( 'admin.php?page=' . $this->plugin_name . '-answers&amp;action=edit&amp;post='.$parameter["event"] ); ?>" class="weebotLite-form">
+	<input type="hidden" name="<?php echo $this->plugin_name; ?>[edit]" />
+	<table class="form-table">
+		<tbody>
+			<tr>
+				<th scope="row"><span><?php esc_attr_e( 'Question', $this->plugin_name ); ?></span></th>
+				<td> 
+					<?php echo esc_html($question[0]->question); ?>
+					<a class="url button" href="<?php echo admin_url( 'admin.php?page=' . $this->plugin_name . '-questions&amp;action=view&amp;post='.$question[0]->id ); ?>"><?php esc_attr_e( 'View question', $this->plugin_name ); ?></a>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span><?php esc_attr_e( 'Type', $this->plugin_name ); ?></span></th>
+				<td> 
+					<fieldset>
+						<legend class="screen-reader-text"><span><?php esc_attr_e( 'Type', $this->plugin_name ); ?></span></legend>
+						<label for="<?php echo $this->plugin_name . "-" . $event->id;?>-type">
+							<select id="<?php echo $this->plugin_name . "-" . $event->id;?>-type" class="type" name="<?php echo $this->plugin_name;?>[type]" data-question-id="<?php echo $event->id; ?>">
+								<option value="-1"<?php if($event->type==-1) { ?> selected="selected"<?php } ?>><?php esc_attr_e( 'Gossip', $this->plugin_name ); ?></option>
+								<option value="0"<?php if($event->type==0) { ?> selected="selected"<?php } ?>><?php esc_attr_e( 'Answer', $this->plugin_name ); ?></option>
+								<option value="1"<?php if($event->type==1) { ?> selected="selected"<?php } ?>><?php esc_attr_e( 'Question', $this->plugin_name ); ?></option>
+								<option value="2"<?php if($event->type==2) { ?> selected="selected"<?php } ?>><?php esc_attr_e( 'URL', $this->plugin_name ); ?></option>
+								<?php if($files!==false) { ?><option value="3"<?php if($event->type==3) { ?> selected="selected"<?php } ?>><?php esc_attr_e( 'File', $this->plugin_name ); ?></option><?php } ?>
+							</select>
+							<p class="description"><?php esc_attr_e( 'The type of the response (gossip will not be remembered)', $this->plugin_name ); ?></p>
+						</label>
+					</fieldset>
+				</td>
+			</tr>
+			<?php if($files!==false) { ?>
+			<tr class="files<?php if($event->type!=3) { ?> hidden<?php } ?>" id="answer_files_<?php echo $event->id; ?>">
+				<th scope="row"><span><?php esc_attr_e( 'File', $this->plugin_name ); ?></span></th>
+				<td> 
+					<fieldset>
+						<legend class="screen-reader-text"><span><?php esc_attr_e( 'File', $this->plugin_name ); ?></span></legend>
+						<label for="<?php echo $this->plugin_name . "-" . $event->id;?>-file">
+							<select id="<?php echo $this->plugin_name . "-" . $event->id;?>-file" class="files" name="<?php echo $this->plugin_name;?>[file]">
+								<?php
+									foreach($files as $file) {
+										?><option value="<?php echo $file; ?>"<?php if($event->type==3&&$file==$event->action) { ?> selected="selected"<?php } ?>><?php echo str_replace(".phtml","",$file);; ?></option><?php
+									}
+								?>
+							</select>
+							<p class="description"><?php esc_attr_e( 'The file for the response', $this->plugin_name ); ?></p>
+						</label>
+					</fieldset>
+				</td>
+			</tr>
+			<?php } ?>
+			<tr class="answers<?php if($event->type==3) { ?> hidden<?php } ?>" id="answer_<?php echo $event->id; ?>">
+				<th scope="row"><span><?php esc_attr_e( 'Action', $this->plugin_name ); ?></span></th>
+				<td> 
+					<fieldset>
+						<legend class="screen-reader-text"><span><?php esc_attr_e( 'Action', $this->plugin_name ); ?></span></legend>
+						<label for="<?php echo $this->plugin_name . "-" . $event->id;?>-action">
+							<input type="text" id="<?php echo $this->plugin_name . "-" . $event->id;?>-action" class="action" name="<?php echo $this->plugin_name;?>[action]" value="<?php if($event->type!=3) { echo $event->action; } ?>" />
+							<p class="description"><?php esc_attr_e( 'The answer, question or filename', $this->plugin_name ); ?></p>
+						</label>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><span><?php esc_attr_e( 'Page', $this->plugin_name ); ?></span></th>
+				<td> 
+					<fieldset>
+						<legend class="screen-reader-text"><span><?php esc_attr_e( 'Page', $this->plugin_name ); ?></span></legend>
+						<label for="<?php echo $this->plugin_name . "-" . $page->id;?>-page">
+							<input type="checkbox" id="<?php echo $this->plugin_name . "-" . $event->id;?>-page" class="page" value="<?php echo $page->id;?>" name="<?php echo $this->plugin_name;?>[page]"<?php if($question[0]->page_related!=0) { ?> checked="checked"<?php } ?> />
+							<p class="description"><?php esc_attr_e( 'This answer is page-related', $this->plugin_name ); ?></p>
+							<a class="url" href="<?php echo $page->page; ?>" target="_blank"><?php echo $page->page; ?></a>
+						</label>
+					</fieldset>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Save changes', $this->plugin_name ); ?>"></p>
+</form>

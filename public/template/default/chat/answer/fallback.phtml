@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Provide a public area view for fallback for the support-chat
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+?>
+<div class="answer unanswered type-fallback fallback" id="<?php echo $this->plugin_name."_".$parameter["question"]; ?>_answer" data-question-id="<?php echo $parameter["question"]; ?>">
+	<div class="message">
+		<div class="fallback">
+			<div class="info"><?php esc_attr_e( 'There is no supporter online!', $this->plugin_name ); ?></div>
+			<?php
+			
+				/* 
+				*	get question
+				*/
+				$question = $this->get_question_by_id($parameter["question"]);
+				
+			?>
+		</div>
+		<div class="callback hidden" id="<?php echo $this->plugin_name; ?>-callback-<?php echo $parameter["question"]; ?>"></div>
+	</div>
+</div>

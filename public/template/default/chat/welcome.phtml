@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Provide a public area view for the welcome message for the support-chat
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+?>
+<div class="answer type-fallback">
+
+	<div class="message">
+		<?php 
+			
+			/*
+			*	Welcome Message
+			*/
+			if(empty($parameter["options"]["chat:welcome"])) {
+				esc_attr_e( 'Ask us anything', $this->plugin_name );
+			} else {
+				echo esc_html($parameter["options"]["chat:welcome"]);
+			}
+
+		?>
+	</div>
+	
+	<?php
+		/*
+		*	Support User
+		*/
+		if($parameter["options"]["chat:supporter"]==1) {
+			$supporter = $this->get_supporter("all");
+			if($supporter!==false) {
+				?>
+					<div class="supporter">
+						<div class="message"><?php esc_attr_e( 'These supporters are here to help you', $this->plugin_name ); ?></div>
+						<?php
+							foreach($supporter as $supporter_info) {
+								$supporter_wp_data = get_userdata($supporter_info->user);
+								?>
+									<div class="support-user">
+										<img src="<?php echo get_avatar_url($supporter_info->user); ?>" alt="" class="profile" />
+										<div class="name"><?php echo $supporter_wp_data->data->display_name; ?></div>
+										<div class="time <?php if((time()-$supporter_info->online)<6) { echo "online"; } ?>"><?php if((time()-$supporter_info->online)<6) { esc_attr_e( 'is online', $this->plugin_name ); } else { echo $this->time_elapsed_string($supporter_info->online,false,true); } ?></div>
+									</div>
+								<?php
+							}
+						?>
+					</div>
+				<?php
+			}
+		}
+	?>
+
+</div>

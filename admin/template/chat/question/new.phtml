@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Provide a admin view for incoming questions (support chat)
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/admin/template
+ */
+ 
+	/* 
+	*	load question data
+	*/
+	$question = $this->get_question_by_id($parameter->question);
+	
+	/* 
+	*	load page data
+	*/
+	$page = $this->get_page_by("id",$question->page);
+	
+	/* 
+	*	get user data
+	*/
+	$this_user = $this->user_data($question->user);
+	$this_name = (isset($this_user->data)) ? $this_user->data->display_name : $this_user->name;
+?>
+<div class="question">
+	<div class="title"><?php 
+		if(!empty($question->question)) {
+			echo esc_html($question->question);
+		}
+		if(!empty($question->files)) {
+			$this->template("chat/question/question/files",array("ids"=>$question->files));
+		}
+		if(!empty($question->screenshot)) {
+			$this->template("chat/question/question/screenshot",array("id"=>$question->screenshot));
+		} 
+	?></div>
+	<div class="url">
+		<?php esc_attr_e( 'From', $this->plugin_name ); ?>
+		<cite class="comment-author"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-user&amp;action=view&amp;post=".$question->user); ?>" rel="external nofollow"><?php if($this_name=="") { esc_attr_e( 'anonym', $this->plugin_name ); } else { echo esc_html($this_name); } ?></a></cite>
+		<?php esc_attr_e( 'on', $this->plugin_name ); ?>
+		<?php echo $page->page; ?>
+	</div>
+	<div class="close"><span class="dashicons dashicons-no"></span></div>
+	<div class="answer button" data-question-id="<?php echo $parameter->question; ?>"><?php esc_attr_e( 'Create answer', $this->plugin_name ); ?></div>
+	<a class="existing-answer button" href="<?php echo admin_url( 'admin.php?page=' . $this->plugin_name . '-answers&amp;post='.$parameter->question.'&amp;action=create&amp;existing' ); ?>"><?php esc_attr_e( 'Use existing answer', $this->plugin_name ); ?></a>
+	<div class="hidden" id="answer_question_<?php echo $parameter->question; ?>"><?php	$this->template("chat/answers/create",array("question"=>$question,"page"=>$page,"chat"=>$parameter)); ?></div>
+</div>

@@ -1,0 +1,11 @@
+--- weebotLite default theme
+--- ---------------------------
+--- @param		template		Name of Template
+--- @param		css				Filename of stylesheet
+--- @param		js				Filename of stylesheet
+--- @param		description		Description for this theme
+--- ---------------------------
+--- Note:	Use of parameter
+---       	Parameter should be seperated to value by tabluator:tabulator ( \t:\t )
+
+description	:	Default theme for the frontend support chat

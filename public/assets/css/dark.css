@@ -1,0 +1,307 @@
+@import url("loader.css"); /* import css-loader */
+
+/* support-chat element */
+#weebotLite {
+	position:fixed;
+	bottom:0;
+	right:40px;
+	z-index:9999;
+}
+
+/* support-chat text input */
+#weebotLite textarea {
+	resize:none;
+	height:auto;
+	padding:5px 10px;
+	border:1px solid #000;
+	border-radius:0;
+	width: 94%;
+    margin: 0 3%;
+	overflow:hidden;
+	box-sizing:border-box;
+}
+
+#weebotLite .buttons {
+    position: absolute;
+    bottom: -55px;
+    right: 20px;
+}
+/* support-chat send button */
+#weebotLite .button {
+	display:inline-block;
+	width:25px;
+	height:25px;
+	background:#DDD;
+	font-size:10px;
+	cursor:pointer;
+	overflow:hidden;
+}
+
+/* screenshots */
+.screenshot-active #weebotLite,
+.screenshot-active #weebotLiteBackground {
+	display:none;
+}
+.weebotLiteScreenshotElement {
+	z-index:999999;
+}
+#weebotLiteScreenshotArea {
+	cursor:crosshair;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+#weebotLiteScreenshot {
+	position:absolute;
+	background:rgba(255,255,255,.2);
+}
+
+
+/* error message */
+#weebotLite .chat .error {
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:99;
+	background:#C00;
+	color:#FFF;
+	padding:10px;
+	opacity:0.7;
+}
+#weebotLite input.error {
+	border:1px solid #C00;
+}
+
+/* support-chat */
+#weebotLite .chat {
+	max-height:250px;
+	width:300px;
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	overflow:hidden;
+	position:relative;
+}
+#weebotLite .chat .content {
+	padding:10px;
+}
+/* support-chat message */
+#weebotLite .chat .message {
+	display:inline-block;
+	background:#275196;
+	padding:5px;
+	font-size:13px;
+	max-width:70%;
+	border-radius:4px;
+}
+#weebotLite .chat .message .message {
+	max-width:100%;
+	padding:0;
+}
+#weebotLite .chat .question,
+#weebotLite .chat .answer {
+	margin:3px 0;
+}
+#weebotLite .chat .answer .answer {
+	margin:0;
+}
+#weebotLite .chat .question .message {
+	text-align:left;
+	color:#FFF;
+}
+#weebotLite .chat .question .message a {
+	color:#FFF;
+}
+/* support-chat message (answer) */
+#weebotLite .chat .answer .message {
+	background:#111;
+	color:#FFF;
+	border-radius:4px;
+}
+/* support-chat message (unanswered question) */
+#weebotLite .chat .unanswered .message {
+	background:#333;
+	color:#FFF;
+}
+#weebotLite .chat .unanswered .callback {
+	font-size:11px;
+	opacity:0.7;
+}
+#weebotLite .chat .question {
+	text-align:right;
+}
+#weebotLite .chat .question.answer {
+	text-align:left;
+}
+#weebotLite .chat .answer:last-child {
+	margin-bottom:10px;
+}
+#weebotLite .chat .answer .answer:last-child {
+	margin-bottom:0;
+}
+#weebotLite .answer .block {
+	margin-top:5px;
+	font-size:12px;
+	opacity:0.8;
+	display:block;
+}
+
+/* support-chat minified view */
+#weebotLite .small {
+	background:#111;
+	border-radius:5px 5px 0 0;
+	color:#F5F5F5;
+	padding:10px;
+	text-align:center;
+	font-size:13px;
+}
+#weebotLite .small:hover {
+	background:#000;
+	color:#FFF;
+	cursor:pointer;
+}
+
+/* support-chat opened */
+#weebotLite .extended {
+	display:none;
+	position:relative;
+}
+#weebotLite .extended.visible {
+	display:block;
+	background:#000;
+}
+
+/* support-chat hidden elements */
+#weebotLite .hidden {
+	display:none;
+	height:0;
+}
+
+/* support-chat settings */
+#weebotLite .settings {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	padding:20px;
+	color:#FFF;
+	bottom:0;
+	background:rgba(0,0,0,0.7);
+}
+#weebotLite .settings input {
+	margin-top:7px;
+	height:35px;
+	border-radius:3px;
+	width:100%;
+	padding:4px 8px;
+}
+#weebotLite .close {
+	font-size:15px;
+	cursor:pointer;
+	position:absolute;
+	top:10px;
+	right:10px;
+	height:20px;
+	text-align:center;
+	line-height:20px;
+	width:20px;
+}
+
+/* support-chat buttons */
+#weebotLite .email,
+#weebotLite .save,
+#weebotLite .search {
+	display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 26px;
+    height: 28px;
+    margin: 5px 0 0 0;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	color: #EEE;
+    border-color: #ccc;
+    background: #222;
+    -webkit-box-shadow: 0 1px 0 #111;
+    box-shadow: 0 1px 0 #111;
+    vertical-align: top;
+}
+#weebotLite .email:hover,
+#weebotLite .save:hover,
+#weebotLite .search:hover {
+	color: #fff;
+    border-color: #000;
+    background: #222;
+}
+#weebotLite .email:focus,
+#weebotLite .save:focus,
+#weebotLite .search:focus,
+#weebotLite .email:active,
+#weebotLite .save:active,
+#weebotLite .search:active {
+    -webkit-box-shadow: inset 0 1px 0 #000;
+    box-shadow: inset 0 1px 0 #000;
+}
+#weebotLite .save {
+	margin-top:10px;
+}
+
+/* additional admin view for logged in backend-users, which arent supporters */
+#weebotLiteChat {
+	left:10px !important;
+	right:auto !important;
+}
+#wp-admin-bar-weebotLite .ab-icon:before {
+    content: "\f125";
+    top: 3px;
+}
+
+
+
+#weebotLite .buttons {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+#weebotLite .buttons.hide {
+	opacity:0;
+}
+/* support-chat send button */
+#weebotLite .button {
+	display:inline-block;
+	width:22px;
+	height:22px;
+	background-size:98% 98% !important;
+	font-size:10px;
+	opacity:0.65;
+	cursor:pointer;
+	margin-left:5px;
+	overflow:hidden;
+}
+#weebotLite .button:hover {
+	opacity:1;
+}
+#weebotLite .button.send {
+	width:0;
+	background:url("../img/chat.icon.send.png") center center no-repeat;
+}
+#weebotLite.text-focused .button {
+	width:0;
+}
+#weebotLite.text-focused .button.send {
+	width:22px;
+}
+#weebotLite .buttons form {
+	display:none;
+}

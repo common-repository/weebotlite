@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Provide a public area view for spam-blocked questions
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+?>
+<div class="answer type-spam spam">
+	<div class="message"><?php esc_attr_e( 'Your message was blocked!', $this->plugin_name ); ?></div>
+</div>

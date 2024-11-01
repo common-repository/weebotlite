@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * Provide a admin view for the "create"-action for keyword-based answers
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/admin/template
+ */
+
+	/* 
+	*	load answer-files
+	*/
+	$files = $this->get_answer_files();
+	
+	/* 
+	*	load pages
+	*/
+	$pages = $this->get_pages();
+
+?>
+<h2 class="nav-tab-wrapper"><?php esc_attr_e( 'Why we recommend you the Premium-Version', $this->plugin_name ); ?></h2>
+<div class="weebotLite-get-premium">
+	<p><?php esc_attr_e( 'Our Premium-Plugin weebot brings AI to your website. You never have to answer a simple question again, if you allow the Support-Chat-Bot to save it.', $this->plugin_name ); ?></p>
+	<p><strong><?php esc_attr_e( 'Some additional functions of weebot are:', $this->plugin_name ); ?></strong></p>
+	<ul>
+		<li><?php esc_attr_e( 'weebot gets more clever with each answered Message', $this->plugin_name ); ?>.</li>
+		<li><?php esc_attr_e( 'Auto-Answering similar Questions/Messages', $this->plugin_name ); ?>.</li>
+		<li><?php esc_attr_e( 'Create keyword-based Answers, which can already filter a lot of messages', $this->plugin_name ); ?>.</li>
+		<li><?php esc_attr_e( 'Include the Support-Chat to multiple Domains (Crossdomain)', $this->plugin_name ); ?></li>
+		<li><?php esc_attr_e( 'Fallback Solutions (E-Mail and Search-Results)', $this->plugin_name ); ?></li>
+		<li><?php esc_attr_e( 'Allow Screenshots and File-Uploads', $this->plugin_name ); ?></li>
+	</ul>
+	<a class="button button-primary button-hero load-customize hide-if-no-customize" href="<?php esc_attr_e( 'http://shop.weedesign.de/wordpress/plugins/weebot-your-custom-support-chat-bot.html', $this->plugin_name ); ?>"><?php esc_attr_e( 'Upgrade now', $this->plugin_name ); ?></a>
+</div>

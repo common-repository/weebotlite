@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Provide a public area view for files for the support-chat
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+	/*
+	*	get question data
+	*/
+	$question = $this->get_question_by_id($parameter["question"]);
+ 
+?>
+<div class="answer type-file file" id="<?php echo $this->plugin_name."_".$parameter["question"]; ?>_answer">
+	<div class="message">
+		<img src="<?php echo get_avatar_url($parameter["answer"]->user); ?>" alt="" class="profile" />
+		<?php 
+			$this->template("chat/answer/file/".str_replace(".phtml","",$parameter["answer"]->action),array("question"=>$question,"answer"=>$parameter["answer"]));
+		?>
+	</div>
+</div>

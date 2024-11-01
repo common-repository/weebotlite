@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * Provide a public area view for questions for the support-chat
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+?>
+<div class="question">
+	<div class="message"><?php 
+		/*
+		* Message
+		*/
+		if(!empty($parameter["question"]->question)) {
+			echo esc_html($parameter["question"]->question);
+		}
+		/*
+		* Files
+		*/
+		if(!empty($parameter["question"]->files)) {
+			$this->template("chat/question/question/files",array("ids"=>$parameter["question"]->files));
+		}
+		/*
+		* Screenshot
+		*/
+		if(!empty($parameter["question"]->screenshot)) {
+			$this->template("chat/question/question/screenshot",array("id"=>$parameter["question"]->screenshot));
+		}
+	?></div>
+	<div class="time"><?php echo $this->time_elapsed_string($parameter["log"]->time); ?></div>
+</div>

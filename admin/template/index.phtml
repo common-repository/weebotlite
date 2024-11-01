@@ -1,0 +1,225 @@
+<?php
+
+/**
+ * Provide a admin area view for the plugin
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/admin/template
+ */
+ 
+	/* 
+	*	get options
+	*/
+	$options = get_option($this->plugin_name,$this->default_options());
+	/* 
+	*	get a list of all answers
+	*/
+	$answers = $this->get_page_data("events","id!=-1","action","event");
+	/* 
+	*	get a list of all questions
+	*/
+	$questions = $this->get_page_data("questions","answered!=1","question","question");
+	/* 
+	*	get a list of all user
+	*/
+	$user = $this->get_page_data("user","type='support'","name","user");
+?>
+
+<div class="wrap">
+
+	<h1 class="wp-heading-inline"><?php echo esc_html( get_admin_page_title() ); ?></h1>
+	
+	<hr class="wp-header-end">
+	
+	<div id="welcome-panel" class="welcome-panel">
+		<div class="welcome-panel-content">
+			<h2><?php esc_attr_e( 'Welcome to weebotLite', $this->plugin_name ); ?></h2>
+			<p class="about-description"><?php esc_attr_e( 'We’ve assembled some links to get you started', $this->plugin_name ); ?>:</p>
+			<div class="welcome-panel-column-container">
+				<div class="welcome-panel-column">
+					<h3><?php esc_attr_e( 'Get Started', $this->plugin_name ); ?></h3>
+					<a class="button button-primary button-hero load-customize hide-if-no-customize" href="<?php echo admin_url("options-general.php?page=".$this->plugin_name."-options"); ?>"><?php esc_attr_e( 'Customize Your Bot', $this->plugin_name ); ?></a>
+					<a class="button weebotLite-premium-button button-primary button-hero load-customize hide-if-no-customize" href="<?php esc_attr_e( 'http://shop.weedesign.de/wordpress/plugins/weebot-your-custom-support-chat-bot.html', $this->plugin_name ); ?>"><?php esc_attr_e( 'Upgrade to Premium', $this->plugin_name ); ?></a>
+				</div>
+				<div class="welcome-panel-column">
+					<h3><?php esc_attr_e( 'First Steps', $this->plugin_name ); ?></h3>
+					<ul>
+						<li><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers&amp;action=create"); ?>" class="welcome-icon welcome-write-blog"><?php esc_attr_e( 'Write your first keyword-based answer', $this->plugin_name ); ?></a></li>
+						<li><a href="<?php echo admin_url("users.php"); ?>" class="welcome-icon welcome-add-page"><?php esc_attr_e( 'Add some support-user', $this->plugin_name ); ?></a></li>
+						<li><a href="<?php echo get_home_url(); ?>" class="welcome-icon welcome-view-site"><?php esc_attr_e( 'Talk to your bot', $this->plugin_name ); ?></a></li>
+					</ul>
+				</div>
+				<div class="welcome-panel-column welcome-panel-last">
+					<h3><?php esc_attr_e( 'More Actions', $this->plugin_name ); ?></h3>
+					<ul>
+						<li><div class="welcome-icon welcome-widgets-menus"><?php esc_attr_e( 'Manage', $this->plugin_name ); ?> <a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions"); ?>"><?php esc_attr_e( 'questions', $this->plugin_name ); ?></a> <?php esc_attr_e( 'or', $this->plugin_name ); ?> <a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers"); ?>"><?php esc_attr_e( 'answers', $this->plugin_name ); ?></a></div></li>
+						<li><a href="<?php echo admin_url("options-general.php?page=".$this->plugin_name."-options#spam"); ?>" class="welcome-icon welcome-comments"><?php esc_attr_e( 'Turn spam-protection on or off', $this->plugin_name ); ?></a></li>
+						<li><a href="http://weepress.weedesign.de/en/weebotLite/" target="_blank" class="welcome-icon welcome-learn-more"><?php esc_attr_e( 'See the documentation', $this->plugin_name ); ?></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="dashboard-widgets-wrap">
+		<div id="dashboard-widgets" class="metabox-holder">
+			<div id="postbox-container-1" class="postbox-container">
+				<div id="normal-sortables" class="meta-box-sortables">
+					<div id="dashboard_right_now" class="postbox ">
+						<h2 class="hndle"><span><?php esc_attr_e( 'At a Glance', $this->plugin_name ); ?></span></h2>
+						<div class="inside">
+							<div class="main">
+								<ul>
+									<li class="post-count"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions"); ?>"><?php echo number_format($questions["all_count_real"],0,".","."); ?> <?php esc_attr_e( 'Questions', $this->plugin_name ); ?></a></li>
+									<li class="page-count"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers"); ?>"><?php echo number_format($answers["all_count_real"],0,".","."); ?> <?php esc_attr_e( 'Answers', $this->plugin_name ); ?></a></li>
+									<li class="comment-count"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions&amp;method=unanswered"); ?>"><?php echo number_format($questions["all_count_special"],0,".","."); ?> <?php esc_attr_e( 'Unanswered', $this->plugin_name ); ?></a></li>
+									<li class="user-count"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-user"); ?>" class="dashicons-before"><?php echo number_format($user["all_count_real"],0,".","."); ?> <?php esc_attr_e( 'User', $this->plugin_name ); ?></a></li>
+									<li class="user-count"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-user&amp;method=support"); ?>" class="dashicons-before"><?php echo number_format($user["all_count_special"],0,".","."); ?> <?php esc_attr_e( 'Supporter', $this->plugin_name ); ?></a></li>
+									<?php
+										if($options["online"]==1) {
+											?><li class="user-count"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-user&amp;method=online"); ?>" class="dashicons-before"><?php echo number_format(count($this->get_online_user()),0,".","."); ?> <?php esc_attr_e( 'Online', $this->plugin_name ); ?></a></li><?php
+										}
+									?>
+								</ul>
+								<p id="wp-version-message"><span id="wp-version"><?php echo $this->plugin_name; ?> <?php echo $this->version; ?> <?php esc_attr_e( 'is installed', $this->plugin_name ); ?>.</span></p>	
+							</div>
+							<div class="sub">
+								<p class="akismet-right-now">
+									<a href="http://www.weedesign.de/weebotLite.html" target="_blank"><?php echo $this->plugin_name; ?></a> 
+									<?php esc_attr_e( 'is trying to improve and getting better and better. Help us by informing us about bugs :) If you need help just message your question to our', $this->plugin_name ); ?> <a href="http://weepress.weedesign.de/weebotLite" target="_blank"><?php echo $this->plugin_name; ?> <?php esc_attr_e( 'here', $this->plugin_name ); ?></a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div id="dashboard_activity" class="postbox">
+						<h2 class="hndle"><span><?php esc_attr_e( 'Activity', $this->plugin_name ); ?></span></h2>
+						<div class="inside">
+							<div id="activity-widget">
+								<div id="latest-comments" class="activity-block">
+									<h3><?php esc_attr_e( 'Recently Answered', $this->plugin_name ); ?></h3>
+									<div id="recent-answered">
+										<ul id="the-comment-list" data-wp-lists="list:comment">
+											<?php 
+												if(isset($answers["events"])) {
+													if(count($answers["events"])>0) {
+														$questions_answer = $this->get_questions_by_answer($answers["events"][0]->id);
+														if($questions_answer!==false) {
+															$question = $questions_answer[0];
+															$this_question_user = $this->user_data($question->user);
+															$this_question_name = (isset($this_question_user->data)) ? $this_question_user->data->display_name : $this_question_user->name;
+															$page = $this->get_page_by("id",$question->page);
+															?>
+																<li class="comment even thread-even depth-1 comment-item approved">									
+																	<div class="dashboard-comment-wrap has-row-actions">
+																		<h3><?php esc_attr_e( 'Question', $this->plugin_name ); ?></h3>
+																		<p class="comment-meta">
+																			<?php esc_attr_e( 'From', $this->plugin_name ); ?> <cite class="comment-author"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-user&amp;action=view&amp;post=".$question->user); ?>" rel="external nofollow" class="url"><?php if($this_question_name=="") { esc_attr_e( 'anonym', $this->plugin_name ); } else { echo esc_html($this_question_name); } ?></a></cite> <?php esc_attr_e( 'on', $this->plugin_name ); ?> <a href="<?php echo $page->page; ?>" target="_blank"><?php echo $page->page; ?></a>
+																		</p>
+																		<blockquote><p><?php echo $question->question; ?></p></blockquote>
+																		<p class="row-actions">
+																			<span class="reply"><a class="vim-r" href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers&amp;action=edit&amp;post=".$answers["events"][0]->id); ?>"><?php esc_attr_e( 'Edit Answer', $this->plugin_name ); ?></a></span>
+																			<span class="view"> | <a class="comment-link" href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions&amp;action=view&amp;post=".$question->id); ?>"><?php esc_attr_e( 'View', $this->plugin_name ); ?></a></span>
+																			<span class="trash"> | <a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions&amp;action=delete&amp;post=".$question->id); ?>" data-remove="recent-answered" data-id="<?php echo $question->id; ?>" data-table="questions" class="weebotLite-delete delete vim-d vim-destructive"><?php esc_attr_e( 'Delete', $this->plugin_name ); ?></a></span>
+																		</p>
+																	</div>
+																</li>
+																<li class="comment even thread-even depth-1 comment-item approved">									
+																	<div class="dashboard-comment-wrap has-row-actions">
+																		<h3><?php esc_attr_e( 'Answer', $this->plugin_name ); ?></h3>
+																		<blockquote><p><?php echo $answers["events"][0]->action; ?></p></blockquote>
+																		<p class="row-actions">
+																			<span class="edit"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers&amp;action=edit&amp;post=".$answers["events"][0]->id); ?>"><?php esc_attr_e( 'Edit', $this->plugin_name ); ?></a></span>
+																			<span class="trash"> | <a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers&amp;action=delete&amp;post=".$answers["events"][0]->id); ?>" data-remove="recent-answered" data-id="<?php echo $answers["events"][0]->id; ?>" data-table="events" class="weebotLite-delete delete vim-d vim-destructive"><?php esc_attr_e( 'Delete', $this->plugin_name ); ?></a></span>
+																		</p>
+																	</div>
+																</li>
+															<?php
+														} else {
+															?><li class="comment even thread-even depth-1 comment-item approved"><?php esc_attr_e( 'No question was recently answered!', $this->plugin_name ); ?></li><?php
+														}
+													} else {
+														?>
+															<li class="comment even thread-even depth-1 comment-item approved"><?php esc_attr_e( 'No Answers created!', $this->plugin_name ); ?></li>
+														<?php 
+													} 
+												} else {
+													?>
+														<li class="comment even thread-even depth-1 comment-item approved"><?php esc_attr_e( 'No Answers created!', $this->plugin_name ); ?></li>
+													<?php 
+												} 
+											?>
+										</ul>
+									</div>
+								</div>
+								<div id="latest-comments" class="activity-block">
+									<h3><?php esc_attr_e( 'Recent Questions', $this->plugin_name ); ?></h3>
+									<ul id="the-comment-list" data-wp-lists="list:comment">
+									<?php if(count($questions["questions"])>0) { 
+										for($i=0;$i<3;$i++) {
+											if(isset($questions["questions"][$i])) {
+												$this_user = $this->user_data($questions["questions"][$i]->user);
+												$this_name = (isset($this_user->data)) ? $this_user->data->display_name : $this_user->name;
+												$page = $this->get_page_by("id",$questions["questions"][$i]->page);
+												?>
+													<li id="post-<?php echo $questions["questions"][$i]->id; ?>" class="comment even thread-even depth-1 comment-item approved">									
+														<div class="dashboard-comment-wrap has-row-actions">
+															<p class="comment-meta">
+																<?php esc_attr_e( 'From', $this->plugin_name ); ?> <cite class="comment-author"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-user&amp;action=view&amp;post=".$questions["questions"][$i]->user); ?>" rel="external nofollow" class="url"><?php if($this_name=="") { esc_attr_e( 'anonym', $this->plugin_name ); } else { echo esc_html($this_name); } ?></a></cite> <?php esc_attr_e( 'on', $this->plugin_name ); ?> <a href="<?php echo $page->page; ?>" target="_blank"><?php echo $page->page; ?></a>
+															</p>
+															<blockquote><?php 
+																if(!empty($questions["questions"][$i]->question)) {
+																	echo esc_html($questions["questions"][$i]->question);
+																}
+															?></blockquote>
+															<p class="row-actions">
+																<?php 
+																	$answer = $this->get_answer_by_question($questions["questions"][$i]->id);
+																	if($answer!==false) {
+																		?><span class="reply"><a class="vim-r" href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers&amp;action=edit&amp;post=".$answer[0]->id); ?>"><?php esc_attr_e( 'Edit Answer', $this->plugin_name ); ?></a></span><?php
+																	} else {
+																		?><span class="reply"><a class="vim-r" href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers&amp;action=create&amp;post=".$questions["questions"][$i]->id); ?>"><?php esc_attr_e( 'Create Answer', $this->plugin_name ); ?></a></span><?php
+																	}
+																?>
+																<span class="view"> | <a class="comment-link" href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions&amp;action=view&amp;post=".$questions["questions"][$i]->id); ?>"><?php esc_attr_e( 'View', $this->plugin_name ); ?></a></span>
+																<span class="trash"> | <a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions&amp;action=delete&amp;post=".$questions["questions"][$i]->id); ?>" data-id="<?php echo $questions["questions"][$i]->id; ?>" data-table="questions" class="weebotLite-delete delete vim-d vim-destructive"><?php esc_attr_e( 'Delete', $this->plugin_name ); ?></a></span>
+															</p>
+														</div>
+													</li>
+												<?php
+											}
+										}
+									} else { ?>
+										<li id="comment-1" class="comment even thread-even depth-1 comment-item approved">									
+											<div class="dashboard-comment-wrap has-row-actions">
+												<p class="comment-meta">
+													<?php esc_attr_e( 'No Questions asked so far', $this->plugin_name ); ?>
+												</p>
+											</div>
+										</li>
+									<?php } ?>
+									</ul>
+									<ul class="subsubsub">
+										<li class="all"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions"); ?>"><?php esc_attr_e( 'All', $this->plugin_name ); ?> <span class="count">(<span class="all-count"><?php echo number_format($questions["all_count"],0,".","."); ?></span>)</span></a> |</li>
+										<li class="moderated"><a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions&amp;method=unanswered"); ?>"><?php esc_attr_e( 'Unanswered', $this->plugin_name ); ?> <span class="count">(<span class="pending-count"><?php echo number_format($questions["all_count_special"],0,".","."); ?></span>)</span></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="postbox-container-2" class="postbox-container">
+				<div id="side-sortables" class="meta-box-sortables">
+					<div id="dashboard_quick_press" class="postbox ">
+						<h2 class="hndle"><span><?php esc_attr_e( 'Advantages of the Premium-Version', $this->plugin_name ); ?></span></h2>
+						<div class="inside">
+							<?php $this->template("chat/answers/create/keywords"); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

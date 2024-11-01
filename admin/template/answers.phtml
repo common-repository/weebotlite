@@ -1,0 +1,384 @@
+<?php
+
+/**
+ * Provide a admin area view for the "answers"-page of the plugin
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/admin/template
+ */
+ 
+?>
+
+<div class="wrap">
+
+	<h1 class="wp-heading-inline"><?php echo esc_html( get_admin_page_title() ); ?></h1>
+	
+	<?php 
+	
+		/* 
+		*	show "create"-link if there is no action defined
+		*/
+		if(!isset($_GET["action"])) { 
+			?><a href="<?php echo admin_url( 'admin.php?page=' . $this->plugin_name . '-answers&amp;action=create' ); ?>" class="page-title-action"><?php esc_attr_e( 'Create', $this->plugin_name ); ?></a><?php
+		} 
+	
+		/* 
+		*	check if something was posted
+		*/
+		if(isset($_GET["post"])) { 
+		
+			/* 
+			*	if something was posted and and action is defined
+			*/
+			if(isset($_GET["action"])) {
+				switch($_GET["action"]) {
+					
+					/* 
+					*	Delete Answer
+					*/
+					case "delete":
+						$delete = $this->delete("events",$_GET["post"]);
+						$this->template("chat/answers/delete");
+					break;
+					
+					/* 
+					*	Create Answer
+					*/
+					case "create":
+						$question = $this->get_question_by_id($_GET["post"]);
+						if($question===false||$question->answered==1) {
+							if($question===false) {
+								$question = $this->get_question_by_old_question($_GET["post"]);
+								if($question===false) {
+									$this->template("chat/answers/deleted");
+									$event = false;
+								} else {
+									$event = $this->get_answer_by_question($question->question);
+								}
+							} else {
+								$event = $this->get_answer_by_question($_GET["post"]);
+							}
+							if($event!==false) {
+								$this->template("chat/answers/edit",array("event"=>$event[0]->id));
+							}
+						} else {
+							$page = $this->get_page_by("id",$question->page);
+							$this->template("chat/answers/create",array("question"=>$question,"page"=>$page,"user"=>$question->user));
+						}
+					break;
+					
+					/* 
+					*	Edit Answer
+					*/
+					case "edit":
+						$event = $this->get_answer_by_id($_GET["post"]);
+						$this->template("chat/answers/edit",array("event"=>$_GET["post"]));
+					break;
+				}
+			}
+		} else {
+		
+			/* 
+			*	Create Keyword-based Answer
+			*/
+			if(isset($_GET["action"])) {
+				if($_GET["action"]=="create") {
+					$this->template("chat/answers/create/keywords");
+				}
+			} else {
+		
+				/* 
+				*	Create Answer
+				*/
+				$postPluginName = $this->plugin_name;
+				if(isset($_POST["$postPluginName"])) {
+					if(isset($_POST["$postPluginName"]["create"])) {
+						$question = $this->get_question_by_id($_POST["$postPluginName"]["question"]);
+						if($question->answered!=1) {
+							$this->create_answer();
+							$answered = true;
+						} else {
+							$answered_already = true;
+						}
+					}
+				}
+			
+				/* 
+				*	List Answers
+				*/
+				$answers = $this->get_page_data("events","keywords!=''","action","event");
+				
+				if(isset($answered_already)) {
+					?>
+						<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"> 
+							<p><strong><?php esc_attr_e( 'Question was already answered', $this->plugin_name ); ?></strong></p>
+							<button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php esc_attr_e( 'Dismiss this notice', $this->plugin_name ); ?>.</span></button>
+						</div>
+					<?php
+				} else if(isset($answered)) {
+					?>
+						<div class="updated notice is-dismissible"> 
+							<p><strong><?php esc_attr_e( 'Question answered', $this->plugin_name ); ?></strong></p>
+							<button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php esc_attr_e( 'Dismiss this notice', $this->plugin_name ); ?>.</span></button>
+						</div>
+					<?php
+				}
+				
+				?>
+					<hr class="wp-header-end" />
+					<ul class="subsubsub">
+						<li class="all"><a href="?page=<?php echo $_GET["page"]; ?>"<?php if(!isset($_GET["method"])&&$answers["search"]===false) { ?> class="current"<?php } ?>><?php esc_attr_e( 'All', $this->plugin_name ); ?> <span class="count">(<?php echo number_format($answers["all_count_real"],0,".","."); ?>)</span></a> |</li>
+						<?php
+							if($answers["search"]!==false) {
+								?><li>| <a href="?page=<?php echo $_GET["page"]; ?>&amp;s=<?php echo $answers["s"]; ?>" class="current"><?php echo $answers["s"]; ?> <span class="count">(<?php echo number_format($answers["all_count_search"],0,".","."); ?>)</span></a></li><?php
+							}
+						?>
+					</ul>
+					
+					<form action="?page=<?php echo $_GET["page"]; ?>&amp;orderby=<?php echo $answers["orderby"]; ?>&amp;order=<?php echo $answers["order"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>" method="post" id="eventsForm">
+
+						<p class="search-box">
+							<label class="screen-reader-text" for="post-search-input"><?php esc_attr_e( 'Search Answers', $this->plugin_name ); ?>:</label>
+							<input type="search" id="post-search-input" name="s" value="">
+							<input type="submit" id="search-submit" class="button" value="<?php esc_attr_e( 'Search Answers', $this->plugin_name ); ?>">
+						</p>
+					
+						<div class="clearfix"></div>
+					
+						<?php
+						
+							if($answers["start"]>$answers["all_count"]) {
+								
+								?><script type="text/javascript">document.location="?page=<?php echo $_GET["page"]; ?>";</script><?php
+								
+							} else {
+								
+								if(count($answers["events"])>0) {
+								
+									?>
+									
+										<div class="tablenav top">
+											<div class="alignleft actions bulkactions">
+												<label for="bulk-action-selector-top" class="screen-reader-text"><?php esc_attr_e( 'Select bulk action', $this->plugin_name ); ?></label>
+												<select name="action[]" id="bulk-action-selector-top">
+													<option value="-1"><?php esc_attr_e( 'Bulk Actions', $this->plugin_name ); ?></option>
+													<option value="trash"><?php esc_attr_e( 'Delete', $this->plugin_name ); ?></option>
+												</select>
+												<input type="submit" class="button" value="<?php esc_attr_e( 'Apply', $this->plugin_name ); ?>">
+											</div>
+											<div class="tablenav-pages">
+												<span class="displaying-num"><?php echo number_format($answers["all_count"],0,".","."); ?> <?php esc_attr_e( 'events', $this->plugin_name ); ?></span>
+												<span class="pagination-links">
+												<?php 
+													if(isset($_GET["start"])) { 
+														if($answers["page"]>2) {
+															?><a class="tablenav-pages-navspan" href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=<?php echo $answers["orderby"]; ?>&amp;order=<?php echo $answers["order"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">«</a><?php
+														}
+														?><a class="tablenav-pages-navspan" href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=<?php echo $answers["orderby"]; ?>&amp;order=<?php echo $answers["order"]; if(ceil($answers["limit"]*($answers["page"]-1))-$answers["limit"]!=0) { echo '&amp;start='.(ceil($answers["limit"]*($answers["page"]-1))-$answers["limit"]); } if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">‹</a><?php
+													}
+												?>
+												<span class="screen-reader-text"><?php esc_attr_e( 'Current Page', $this->plugin_name ); ?></span>
+												<span id="table-paging" class="paging-input">
+													<span class="tablenav-paging-text"><?php echo number_format(ceil($answers["page"]),0,".","."); ?> <?php esc_attr_e( 'of', $this->plugin_name ); ?> <span class="total-pages"><?php echo number_format(ceil($answers["all_count"]/$answers["limit"]),0,".","."); ?></span></span>
+												</span>
+												<?php 
+													if($answers["all_count"]/$answers["limit"]>1) { 
+														if($answers["page"]<$answers["all_count"]/$answers["limit"]) {
+															?>
+																<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=<?php echo $answers["orderby"]; ?>&amp;order=<?php echo $answers["order"]; ?>&amp;start=<?php echo $answers["limit"]*($answers["page"]);  if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>" class="tablenav-pages-navspan">›</a>
+																<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=<?php echo $answers["orderby"]; ?>&amp;order=<?php echo $answers["order"]; ?>&amp;start=<?php echo (ceil($answers["all_count"]/$answers["limit"])*$answers["limit"])-$answers["limit"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>" class="tablenav-pages-navspan">»</a>
+															<?php
+														}
+													}
+												?>
+												</span>
+											</div>
+											<br class="clear">
+										</div>
+								
+										<table class="wp-list-table widefat fixed striped pages">
+											
+											<thead>
+												<tr>
+													<td id="cb" class="manage-column column-cb check-column">
+														<label class="screen-reader-text" for="cb-select-all-1"><?php esc_attr_e( 'Select All', $this->plugin_name ); ?></label>
+														<input id="cb-select-all-1" type="checkbox">
+													</td>
+													<th scope="col" id="title" class="manage-column column-title column-primary sortable <?php echo $answers["orderAnti"]; ?>">
+														<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=title&amp;order=<?php echo $answers["orderAnti"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">
+															<span><?php esc_attr_e( 'Title', $this->plugin_name ); ?></span>
+															<span class="sorting-indicator"></span>
+														</a>
+													</th>
+													<th scope="col" id="type" class="manage-column column-title column-primary sortable <?php echo $answers["orderAnti"]; ?>">
+														<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=type&amp;order=<?php echo $answers["orderAnti"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">
+															<span><?php esc_attr_e( 'Type', $this->plugin_name ); ?></span>
+															<span class="sorting-indicator"></span>
+														</a>
+													</th>
+													<th scope="col" id="author" class="manage-column column-author"><?php esc_attr_e( 'Author', $this->plugin_name ); ?></th>
+													<th scope="col" id="date" class="manage-column column-date sortable <?php echo $answers["orderAnti"]; ?>">
+														<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=date&amp;order=<?php echo $answers["orderAnti"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">
+															<span><?php esc_attr_e( 'Date', $this->plugin_name ); ?></span>
+															<span class="sorting-indicator"></span>
+														</a>
+													</th>
+												</tr>
+											</thead>
+
+											<tbody id="the-list">
+							
+											<?php
+									
+											for($i=0;$i<$answers["limit"];$i++){
+												if(isset($answers["events"][$i])) {
+													
+													?>
+													
+														<tr id="post-<?php echo $answers["events"][$i]->id; ?>" class="iedit author-self level-0 post-<?php echo $answers["events"][$i]->id; ?> type-page status-publish hentry">
+															<th scope="row" class="check-column">
+																<label class="screen-reader-text" for="cb-select-<?php echo $answers["events"][$i]->id; ?>"><?php esc_attr_e( 'Select', $this->plugin_name ); ?></label>
+																<input id="cb-select-<?php echo $answers["events"][$i]->id; ?>" type="checkbox" name="event[]" value="<?php echo $answers["events"][$i]->id; ?>">
+															</th>
+															<td class="title column-title has-row-actions column-primary page-title" data-colname="Title">
+																<div class="locked-info">
+																	<span class="locked-avatar"></span>
+																	<span class="locked-text"></span>
+																</div>
+																<strong>
+																	<a class="row-title" href="?page=<?php echo $_GET["page"]; ?>&amp;post=<?php echo $answers["events"][$i]->id; ?>&amp;action=edit" aria-label="Edit"><?php echo esc_html($answers["events"][$i]->action); ?></a>
+																</strong>
+																<div class="row-actions">
+																	<span class="edit">
+																		<a href="?page=<?php echo $_GET["page"]; ?>&amp;post=<?php echo $answers["events"][$i]->id; ?>&amp;action=edit" aria-label="Edit"><?php esc_attr_e( 'Edit', $this->plugin_name ); ?></a>
+																		|
+																	</span>
+																	<span class="trash">
+																		<a href="?page=<?php echo $_GET["page"]; ?>&amp;post=<?php echo $answers["events"][$i]->id; ?>&amp;action=delete" data-id="<?php echo $answers["events"][$i]->id; ?>" data-table="events" class="weebotLite-delete"><?php esc_attr_e( 'Trash', $this->plugin_name ); ?></a>
+																	</span>
+																</div>
+															</td>
+															<td class="type column-type" data-colname="Type">
+																<?php 
+																	switch($answers["events"][$i]->type) {
+																		case -1:
+																			esc_attr_e( 'Gossip', $this->plugin_name ); 
+																		break;
+																		case 0:
+																			esc_attr_e( 'Answer', $this->plugin_name ); 
+																		break;
+																		case 1:
+																			esc_attr_e( 'Question', $this->plugin_name ); 
+																		break;
+																		case 2:
+																			esc_attr_e( 'URL', $this->plugin_name ); 
+																		break;
+																		case 3:
+																			esc_attr_e( 'File', $this->plugin_name ); 
+																		break;
+																	}
+																?>
+															</td>
+															<td class="author column-author" data-colname="Author">
+																<a href="edit.php?post_type=page&amp;author=<?php echo $answers["events"][$i]->user; ?>"><?php
+																	if ($thisAnswerUser = get_userdata($answers["events"][$i]->user)) echo $thisAnswerUser->data->display_name;
+																?></a>
+															</td>
+															<td class="date column-date" data-colname="Date"><abbr title="<?php echo $answers["events"][$i]->time; ?>"><?php $timeArr = explode(" ",$answers["events"][$i]->time); echo $timeArr[0]; ?></abbr></td>
+														</tr>
+													
+													<?php
+													
+												}
+											}
+									
+											?>
+									
+											</tbody>
+											<tfoot>
+												<tr>
+													<td class="manage-column column-cb check-column">
+														<label class="screen-reader-text" for="cb-select-all-2"><?php esc_attr_e( 'Select All', $this->plugin_name ); ?></label>
+														<input id="cb-select-all-2" type="checkbox">
+													</td>
+													<th scope="col" class="manage-column column-title column-primary sortable <?php echo $answers["orderAnti"]; ?>">
+														<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=title&amp;order=<?php echo $answers["orderAnti"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">
+															<span><?php esc_attr_e( 'Title', $this->plugin_name ); ?></span>
+															<span class="sorting-indicator"></span>
+														</a>
+													</th>
+													<th scope="col" id="type" class="manage-column column-title column-primary sortable <?php echo $answers["orderAnti"]; ?>">
+														<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=type&amp;order=<?php echo $answers["orderAnti"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">
+															<span><?php esc_attr_e( 'Type', $this->plugin_name ); ?></span>
+															<span class="sorting-indicator"></span>
+														</a>
+													</th>
+													<th scope="col" class="manage-column column-author"><?php esc_attr_e( 'Author', $this->plugin_name ); ?></th>
+													<th scope="col" class="manage-column column-date sortable <?php echo $answers["orderAnti"]; ?>">
+														<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=date&amp;order=<?php echo $answers["orderAnti"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">
+														<span><?php esc_attr_e( 'Date', $this->plugin_name ); ?></span>
+														<span class="sorting-indicator"></span>
+														</a>
+													</th>
+												</tr>
+											</tfoot>
+
+										</table>
+										
+										<div class="tablenav bottom">
+											<div class="alignleft actions bulkactions">
+												<label for="bulk-action-selector-bottom" class="screen-reader-text"><?php esc_attr_e( 'Select bulk action', $this->plugin_name ); ?></label>
+												<select name="action[]" id="bulk-action-selector-bottom">
+													<option value="-1"><?php esc_attr_e( 'Bulk Actions', $this->plugin_name ); ?></option>
+													<option value="trash"><?php esc_attr_e( 'Delete', $this->plugin_name ); ?></option>
+												</select>
+												<input type="submit" class="button" value="<?php esc_attr_e( 'Apply', $this->plugin_name ); ?>">
+											</div>
+											<div class="tablenav-pages">
+												<span class="displaying-num"><?php echo number_format($answers["all_count"],0,".","."); ?> <?php esc_attr_e( 'events', $this->plugin_name ); ?></span>
+												<span class="pagination-links">
+												<?php 
+													if(isset($_GET["start"])) { 
+														if($answers["page"]>2) {
+															?><a class="tablenav-pages-navspan" href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=<?php echo $answers["orderby"]; ?>&amp;order=<?php echo $answers["order"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">«</a><?php
+														}
+														?><a class="tablenav-pages-navspan" href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=<?php echo $answers["orderby"]; ?>&amp;order=<?php echo $answers["order"]; if(ceil($answers["limit"]*($answers["page"]-1))-$answers["limit"]!=0) { echo '&amp;start='.(ceil($answers["limit"]*($answers["page"]-1))-$answers["limit"]); } if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>">‹</a><?php
+													}
+												?>
+												<span class="screen-reader-text"><?php esc_attr_e( 'Current page', $this->plugin_name ); ?></span>
+												<span id="table-paging" class="paging-input">
+													<span class="tablenav-paging-text"><?php echo number_format(ceil($answers["page"]),0,".","."); ?> of <span class="total-pages"><?php echo number_format(ceil($answers["all_count"]/$answers["limit"])); ?></span></span>
+												</span>
+												<?php 
+													if($answers["all_count"]/$answers["limit"]>1) { 
+														if($answers["page"]<$answers["all_count"]/$answers["limit"]) {
+															?>
+																<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=<?php echo $answers["orderby"]; ?>&amp;order=<?php echo $answers["order"]; ?>&amp;start=<?php echo $answers["limit"]*($answers["page"]);  if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>" class="tablenav-pages-navspan">›</a>
+																<a href="?page=<?php echo $_GET["page"]; ?>&amp;orderby=<?php echo $answers["orderby"]; ?>&amp;order=<?php echo $answers["order"]; ?>&amp;start=<?php echo (ceil($answers["all_count"]/$answers["limit"])*$answers["limit"])-$answers["limit"]; if(isset($_GET["method"])) { ?>&amp;method=keywords<?php } if($answers["search"]!==false) { ?>&amp;s=<?php echo $answers["s"]; } ?>" class="tablenav-pages-navspan">»</a>
+															<?php
+														}
+													}
+												?>
+												</span>
+											</div>
+											<br class="clear">
+										</div>
+									
+									<?php
+								}
+							
+							}
+							
+						?>
+					
+					</form>
+					
+				<?php 
+			}
+		} 
+	?>
+
+</div>

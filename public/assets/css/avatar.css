@@ -1,0 +1,419 @@
+@import url("loader.css"); /* import css-loader */
+
+/* support-chat element */
+#weebotLite {
+	position:fixed;
+	bottom:0;
+	right:40px;
+	z-index:9999;
+	width:300px;
+}
+@media(min-width:500px) {
+	#weebotLite  {
+		width:380px;
+	}
+}
+
+#weebotLite *,
+.weebotLiteScreenshotElement {
+	-webkit-transition: all 0.2s, margin-top 0.5s;
+	-moz-transition: all 0.2s, margin-top 0.5s;
+	transition: all 0.2s, margin-top 0.5s;
+}
+
+#weebotLiteBackground.visible {
+	position:fixed;
+	z-index:9998;
+	background:rgba(0,0,0,0.7);
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
+
+/* support-chat text input */
+#weebotLite textarea {
+	resize:none;
+	padding:17px 110px 17px 20px;
+	box-sizing:border-box;
+	position:absolute;
+	bottom:-64px;
+	border:2px solid #333;
+	border-radius:0;
+	width: 98%;
+	display:none;
+	border-radius:4px;
+    margin:0 1%;
+	overflow:hidden;
+    font-size: 15px;
+    line-height: 1.33;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+#weebotLite.visible textarea {
+	margin-bottom:0;
+	display:block;
+}
+#weebotLite textarea:hover,
+#weebotLite textarea:focus {
+	border-color:#4286f4;
+}
+#weebotLite textarea[disabled="disabled"] {
+	opacity:0.7;
+}
+#weebotLite textarea[disabled="disabled"]:hover,
+#weebotLite textarea[disabled="disabled"]:focus {
+	border-color:#333;
+}
+
+#weebotLite .buttons {
+    position: absolute;
+    bottom: -54px;
+    right: 20px;
+}
+#weebotLite .buttons.hide {
+	opacity:0;
+}
+/* support-chat send button */
+#weebotLite .button {
+	display:inline-block;
+	width:25px;
+	height:25px;
+	background-size:98% 98% !important;
+	font-size:10px;
+	opacity:0.65;
+	cursor:pointer;
+	margin-left:5px;
+	overflow:hidden;
+}
+#weebotLite .button:hover {
+	opacity:1;
+}
+#weebotLite .button.send {
+	background:url("../img/chat.icon.send.png") center center no-repeat;
+}
+
+/* supporter list */
+#weebotLite .supporter {
+	margin-top:10px;
+}
+#weebotLite .supporter .support-user {
+	position:relative;
+	padding:5px 0 0 60px;
+	margin-top:10px;
+}
+#weebotLite .supporter .support-user img {
+	left:0;
+	width:50px;
+}
+#weebotLite .supporter .support-user .time.online {
+	line-height:15px;
+	padding-left:20px;
+	position:relative;
+}
+#weebotLite .supporter .support-user .time.online:before {
+	content:"";
+	background:green;
+	width:15px;
+	height:15px;
+	position:absolute;
+	top:0;
+	left:0;
+	border-radius:100%;
+	display:inline-block;
+}
+
+/* error message */
+#weebotLite .chat .error {
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:99;
+	background:#C00;
+	color:#FFF;
+	padding:10px;
+	opacity:0.7;
+}
+#weebotLite input.error {
+	border:1px solid #C00;
+}
+
+/* support-chat */
+#weebotLite.visible {
+	height:60%;
+}
+#weebotLite .chat {
+	height:100%;
+	width:300px;
+	margin:0 0 10px;
+	overflow:hidden;
+	position:relative;
+}
+@media(min-width:500px) {
+	#weebotLite .chat {
+		width:380px !important;
+	}
+}
+#weebotLite .chat .content {
+	padding:10px;
+}
+/* support-chat message */
+#weebotLite .chat .message {
+	display:inline-block;
+	font-size:13px;
+	color:#FFF;
+	background:#4286f4;
+	padding:10px;
+	margin-bottom:5px;
+	max-width:250px;
+	margin-left:55px;
+	position:relative;
+	border-radius:4px;
+    line-height: 19px;
+}
+#weebotLite .chat .type-fallback .message {
+	margin-left:0;
+}
+#weebotLite .chat .profile {
+	float:left;
+	margin:0 10px 5px 0;
+	border-radius:100%;
+	width:40px;
+	position:absolute;
+	left:-55px;
+	top:3px;
+}
+#weebotLite .chat .time {
+	opacity:0.7;
+	font-size:11px;
+}
+#weebotLite .chat .message .message {
+	max-width:100%;
+	padding:0;
+	position: static !important;
+    margin-left: 0 !important;
+	margin-bottom:0;
+}
+#weebotLite .chat .question,
+#weebotLite .chat .answer {
+	margin:3px 0;
+}
+#weebotLite .chat .answer .answer {
+	margin:0;
+}
+#weebotLite .chat .question .message {
+	text-align:right;
+}
+#weebotLite .chat .question .message a {
+	color:#FFF;
+}
+/* support-chat message (answer) */
+#weebotLite .chat .answer .message {
+	color:#222;
+	background:#F5F5F5;
+}
+/* support-chat message (unanswered question) */
+#weebotLite .chat .unanswered .message {
+	color:#222;
+}
+#weebotLite .chat .unanswered .callback {
+	font-size:11px;
+	opacity:0.7;
+}
+#weebotLite .chat .question {
+	text-align:right;
+	padding-top:7px;
+	border-top:1px solid #F5F5F5;
+}
+#weebotLite .chat .question:first-child {
+	border-top-width:0;
+}
+#weebotLite .chat .question.answer {
+	text-align:left;
+	padding-top:0;
+	border-top-width:0;
+	color:#222;
+}
+#weebotLite .chat .answer:last-child {
+	margin-bottom:10px;
+}
+#weebotLite .chat .answer .answer:last-child {
+	margin-bottom:0;
+}
+#weebotLite .answer .block {
+	margin-top:5px;
+	font-size:12px;
+	opacity:0.8;
+	display:block;
+}
+/* support-chat minified view */
+#weebotLite .small,
+#weebotLite .settings .close,
+#weebotLiteScreenshotClose {
+	color:#222;
+	padding:10px;
+	height: 75px;
+    width: 75px;
+    border-radius: 100%;
+    margin-bottom: -100px;
+	overflow:hidden;
+	text-indent:-999px;
+	font-size:0;
+	background:#222 url("../img/chat.icon.white.png") center center no-repeat;
+	background-size:50% 50%;
+	position:absolute;
+	top:0;
+	right:0;
+}
+#weebotLite .small.visible {
+	margin-top:-110px;
+}
+#weebotLite .open.small.visible {
+	margin-top:-115px;
+	right:-10px;
+	opacity:0.8;
+}
+#weebotLite .small:hover {
+	background-color:#000;
+	cursor:pointer;
+}
+#weebotLite .open.small,
+#weebotLite .settings .close,
+#weebotLiteScreenshotClose {
+	height:50px;
+	width:50px;
+	background:url("../img/close.icon.png") center center no-repeat;
+	background-size:40% 30%;
+	display:block;
+	transition: all 0.2s, background-color 0.1ms;
+}
+#weebotLite .open.small:hover,
+#weebotLite .settings .close:hover {
+	transform: rotate(180deg);
+}
+
+/* support-chat opened */
+#weebotLite .extended {
+	margin-bottom:-100%;
+}
+#weebotLite .extended.visible {
+	display:block;
+	position:relative;
+	box-shadow:0 2px 3px #222;
+	margin-top:-70px;
+	margin-bottom:0;
+	background:#FFF;
+	border-radius:4px;
+	position:absolute;
+	height:100%;
+	top:0;
+}
+
+/* support-chat hidden elements */
+#weebotLite .hidden {
+	display:none;
+	height:0;
+}
+
+/* support-chat settings */
+#weebotLite .settings {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	padding:20px;
+	color:#FFF;
+	bottom:0;
+	background:rgba(0,0,0,0.9);
+}
+#weebotLite .settings input {
+	margin-top:7px;
+	height:35px;
+	border-radius:3px;
+	width:100%;
+	padding:4px 8px;
+}
+#weebotLite .settings .close {
+	overflow:hidden;
+	text-indent:-999px;
+	font-size:0;
+	background-color:#000;
+	cursor:pointer;
+	top:10px;
+	right:10px;
+	height:30px;
+	width:30px;
+}
+
+/* support-chat buttons */
+#weebotLite .email,
+#weebotLite .save,
+#weebotLite .search {
+	display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 26px;
+    height: 28px;
+    margin: 5px 0 0 0;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	color: #555;
+    border-color: #ccc;
+    background: #f7f7f7;
+    -webkit-box-shadow: 0 1px 0 #ccc;
+    box-shadow: 0 1px 0 #ccc;
+    vertical-align: top;
+}
+#weebotLite .email {
+	margin-bottom:7px;
+}
+#weebotLite .email:hover,
+#weebotLite .save:hover,
+#weebotLite .search:hover {
+	color: #444;
+    border-color: #c0c0c0;
+    background: #f5f5f5;
+}
+#weebotLite .email:focus,
+#weebotLite .save:focus,
+#weebotLite .search:focus,
+#weebotLite .email:active,
+#weebotLite .save:active,
+#weebotLite .search:active {
+    -webkit-box-shadow: inset 0 1px 0 #aaa;
+    box-shadow: inset 0 1px 0 #aaa;
+}
+#weebotLite .save {
+	margin-top:10px;
+}
+
+/* additional admin view for logged in backend-users, which arent supporters */
+#weebotLiteChat {
+	left:10px !important;
+	right:auto !important;
+}
+#wp-admin-bar-weebotLite .ab-icon:before {
+    content: "\f125";
+    top: 3px;
+}
+
+/* scrollbar color */
+.nano > .nano-pane {
+	background:transparent;
+}
+.nano > .nano-pane > .nano-slider {
+	background:rgba(0,0,0,.4);
+}
+.nano > .nano-pane > .nano-slider:hover {
+	background:#4286f4;
+}

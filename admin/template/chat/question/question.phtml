@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * Provide a admin view for each question in a question-list
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/admin/template
+ */
+ 
+?>
+<li id="post-<?php echo $parameter["question"]->id; ?>" class="comment even thread-even depth-1 comment-item approved">									
+	<div class="dashboard-comment-wrap has-row-actions">
+		<p class="comment-meta">
+			<?php
+				/* 
+				*	load page data
+				*/
+				$page = $this->get_page_by("id",$parameter["question"]->page); 
+			?>
+			
+			<?php esc_attr_e( 'From', $this->plugin_name ); ?> 
+			<cite class="comment-author">
+				<a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-user&amp;action=view&amp;post=".$parameter["user"]->id); ?>" rel="external nofollow" class="url">
+					<?php 
+
+						/* 
+						*	if this is a guest
+						*/
+						if($parameter["user"]->user==-1) {
+							if(!empty($parameter["user"]->name)) {
+								echo esc_html($parameter["user"]->name);
+							} else {
+								esc_attr_e( 'anonym', $this->plugin_name );
+							}
+						} 
+
+						/* 
+						*	if this is a logged wordpress user
+						*/
+						else {
+							if ($wp_parameter["user"] = get_userdata($parameter["user"]->user)) {
+								echo $wp_parameter["user"]->data->display_name;
+							} else {
+								esc_attr_e( 'anonym', $this->plugin_name );
+							}
+						}
+
+					?>
+				</a>
+			</cite> 
+			<?php esc_attr_e( 'on', $this->plugin_name ); ?>
+			<a href="<?php echo $page->page; ?>" target="_blank"><?php echo $page->page; ?></a>
+		</p>
+		<blockquote><?php 
+			if(!empty($parameter["question"]->question)) {
+				echo esc_html($parameter["question"]->question);
+			}
+			if(!empty($parameter["question"]->files)) {
+				$this->template("chat/question/question/files",array("ids"=>$parameter["question"]->files));
+			}
+			if(!empty($parameter["question"]->screenshot)) {
+				$this->template("chat/question/question/screenshot",array("id"=>$parameter["question"]->screenshot));
+			} 
+		?></blockquote>
+		<p class="row-actions">
+			<?php
+			
+				/* 
+				*	load answer data
+				*/
+				$answer = $this->get_answer_by_question($parameter["question"]->id);
+				
+				if($answer!==false) {
+					?><span class="reply"><a class="vim-r" href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers&amp;action=edit&amp;post=".$answer[0]->id); ?>"><?php esc_attr_e( 'Edit Answer', $this->plugin_name ); ?></a></span><?php
+				} else {
+					?><span class="reply"><a class="vim-r" href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-answers&amp;action=create&amp;post=".$parameter["question"]->id); ?>"><?php esc_attr_e( 'Create Answer', $this->plugin_name ); ?></a></span><?php
+				}
+				
+			?>
+			<span class="view"> | <a class="comment-link" href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions&amp;action=view&amp;post=".$parameter["question"]->id); ?>"><?php esc_attr_e( 'View', $this->plugin_name ); ?></a></span>
+			<span class="trash"> | <a href="<?php echo admin_url("admin.php?page=".$this->plugin_name."-questions&amp;action=delete&amp;post=".$parameter["question"]->id); ?>" data-id="<?php echo $parameter["question"]->id; ?>" data-table="questions" class="weebotLite-delete delete vim-d vim-destructive"><?php esc_attr_e( 'Delete', $this->plugin_name ); ?></a></span>
+		</p>
+	</div>
+</li>

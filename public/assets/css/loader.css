@@ -1,0 +1,179 @@
+/*
+*	CSS Loader Animation
+*/
+
+#weebotLite-loader{
+	position:relative;
+	width:125px;
+	height:125px;
+	margin:auto;
+	transform:scale(0.6);
+		-o-transform:scale(0.6);
+		-ms-transform:scale(0.6);
+		-webkit-transform:scale(0.6);
+		-moz-transform:scale(0.6);
+}
+
+#weebotLite-loader .loader {
+	position:absolute;
+	background-color:rgb(255,255,255);
+	height:22px;
+	width:22px;
+	border-radius:12px;
+		-o-border-radius:12px;
+		-ms-border-radius:12px;
+		-webkit-border-radius:12px;
+		-moz-border-radius:12px;
+	animation-name:weebotLite_loader;
+		-o-animation-name:weebotLite_loader;
+		-ms-animation-name:weebotLite_loader;
+		-webkit-animation-name:weebotLite_loader;
+		-moz-animation-name:weebotLite_loader;
+	animation-duration:0.6s;
+		-o-animation-duration:0.6s;
+		-ms-animation-duration:0.6s;
+		-webkit-animation-duration:0.6s;
+		-moz-animation-duration:0.6s;
+	animation-iteration-count:infinite;
+		-o-animation-iteration-count:infinite;
+		-ms-animation-iteration-count:infinite;
+		-webkit-animation-iteration-count:infinite;
+		-moz-animation-iteration-count:infinite;
+	animation-direction:normal;
+		-o-animation-direction:normal;
+		-ms-animation-direction:normal;
+		-webkit-animation-direction:normal;
+		-moz-animation-direction:normal;
+}
+
+#weebotLite-loader-1{
+	left:0;
+	top:51px;
+	animation-delay:0.225s;
+		-o-animation-delay:0.225s;
+		-ms-animation-delay:0.225s;
+		-webkit-animation-delay:0.225s;
+		-moz-animation-delay:0.225s;
+}
+
+#weebotLite-loader-2{
+	left:15px;
+	top:15px;
+	animation-delay:0.3s;
+		-o-animation-delay:0.3s;
+		-ms-animation-delay:0.3s;
+		-webkit-animation-delay:0.3s;
+		-moz-animation-delay:0.3s;
+}
+
+#weebotLite-loader-3{
+	left:51px;
+	top:0;
+	animation-delay:0.375s;
+		-o-animation-delay:0.375s;
+		-ms-animation-delay:0.375s;
+		-webkit-animation-delay:0.375s;
+		-moz-animation-delay:0.375s;
+}
+
+#weebotLite-loader-4{
+	right:15px;
+	top:15px;
+	animation-delay:0.4s;
+		-o-animation-delay:0.4s;
+		-ms-animation-delay:0.4s;
+		-webkit-animation-delay:0.4s;
+		-moz-animation-delay:0.4s;
+}
+
+#weebotLite-loader-5{
+	right:0;
+	top:51px;
+	animation-delay:0.525s;
+		-o-animation-delay:0.525s;
+		-ms-animation-delay:0.525s;
+		-webkit-animation-delay:0.525s;
+		-moz-animation-delay:0.525s;
+}
+
+#weebotLite-loader-6{
+	right:15px;
+	bottom:15px;
+	animation-delay:0.6s;
+		-o-animation-delay:0.6s;
+		-ms-animation-delay:0.6s;
+		-webkit-animation-delay:0.6s;
+		-moz-animation-delay:0.6s;
+}
+
+#weebotLite-loader-7{
+	left:51px;
+	bottom:0;
+	animation-delay:0.675s;
+		-o-animation-delay:0.675s;
+		-ms-animation-delay:0.675s;
+		-webkit-animation-delay:0.675s;
+		-moz-animation-delay:0.675s;
+}
+
+#weebotLite-loader-8{
+	left:15px;
+	bottom:15px;
+	animation-delay:0.75s;
+		-o-animation-delay:0.75s;
+		-ms-animation-delay:0.75s;
+		-webkit-animation-delay:0.75s;
+		-moz-animation-delay:0.75s;
+}
+
+
+
+@keyframes weebotLite_loader{
+	0%{
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-o-keyframes weebotLite_loader{
+	0%{
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-ms-keyframes weebotLite_loader{
+	0%{
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-webkit-keyframes weebotLite_loader{
+	0%{
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-moz-keyframes weebotLite_loader{
+	0%{
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+		background-color:rgb(255,255,255);
+	}
+}

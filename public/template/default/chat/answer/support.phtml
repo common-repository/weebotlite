@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Provide a public area view for fallback to an active supporter (wait for answer)
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+?>
+<div class="answer unanswered type-support support" id="<?php echo $this->plugin_name."_".$parameter["question"]; ?>_answer" data-question-id="<?php echo $parameter["question"]; ?>">
+	<div class="message">
+		<?php $supporter = get_userdata($parameter["support"]->user); ?>
+		<div class="fallback">
+			<strong><?php echo $supporter->data->display_name; ?></strong>
+			<?php 
+				
+				echo esc_attr_e( ' is answering your question as soon as possible', $this->plugin_name ); 
+			
+				/*
+				*	include fallbacks (search and email)
+				*/
+				$this->template("chat/answer/fallback/search",array("options"=>$parameter["options"],"question"=>$parameter["question"]));
+				$this->template("chat/answer/fallback/email",array("options"=>$parameter["options"],"question"=>$parameter["question"]));
+
+			?>
+		</div>
+		<div class="callback hidden" id="<?php echo $this->plugin_name; ?>-callback-<?php echo $parameter["question"]; ?>"><?php echo esc_attr_e( 'seen by ', $this->plugin_name ) . " " . $supporter->data->display_name; ?></div>
+	</div>
+</div>

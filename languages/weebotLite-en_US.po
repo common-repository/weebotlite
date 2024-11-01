@@ -1,0 +1,721 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en_US\n"
+
+msgid "Create"
+msgstr "Create"
+
+msgid "Question was already answered"
+msgstr "Question was already answered"
+
+msgid "Dismiss this notice"
+msgstr "Dismiss this notice"
+
+msgid "Question answered"
+msgstr "Question answered"
+
+msgid "All"
+msgstr "All"
+
+msgid "Keywords"
+msgstr "Keywords"
+
+msgid "Search Answers"
+msgstr "Search Answers"
+
+msgid "Select bulk action"
+msgstr "Select bulk action"
+
+msgid "Bulk Actions"
+msgstr "Bulk Actions"
+
+msgid "Delete"
+msgstr "Delete"
+
+msgid "Apply"
+msgstr "Apply"
+
+msgid "events"
+msgstr "events"
+
+msgid "Current Page"
+msgstr "Current Page"
+
+msgid "of"
+msgstr "of"
+
+msgid "Select All"
+msgstr "Select All"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Author"
+msgstr "Author"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Select"
+msgstr "Select"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Trash"
+msgstr "Trash"
+
+msgid "Gossip"
+msgstr "Gossip"
+
+msgid "Answer"
+msgstr "Answer"
+
+msgid "Question"
+msgstr "Question"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "File"
+msgstr "File"
+
+msgid "Current page"
+msgstr "Current page"
+
+msgid "No answers found"
+msgstr "No answers found"
+
+msgid "Search Results"
+msgstr "Search Results"
+
+msgid "Sort by type"
+msgstr "Sort by type"
+
+msgid "Sort by message"
+msgstr "Sort by message"
+
+msgid "Use this answer"
+msgstr "Use this answer"
+
+msgid "Create keyword-based answer"
+msgstr "Create keyword-based answer"
+
+msgid "The words, which should be in the question (space separated)"
+msgstr "The words, which should be in the question (space separated)"
+
+msgid "Minimum hit-count"
+msgstr "Minimum hit-count"
+
+msgid "Minimum hit-count of keywords that match with words of the question"
+msgstr "Minimum hit-count of keywords that match with words of the question"
+
+msgid "Minimum words"
+msgstr "Minimum words"
+
+msgid "Minimum"
+msgstr "Minimum"
+
+msgid "Minimum amount of words, which should be included in the question"
+msgstr "Minimum amount of words, which should be included in the question"
+
+msgid "Maximum words"
+msgstr "Maximum words"
+
+msgid "Maximum"
+msgstr "Maximum"
+
+msgid "Maximum amount of words, which should be included in the question"
+msgstr "Maximum amount of words, which should be included in the question"
+
+msgid "The type of the response"
+msgstr "The type of the response"
+
+msgid "The file for the response"
+msgstr "The file for the response"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "The answer, question or filename"
+msgstr "The answer, question or filename"
+
+msgid "Page"
+msgstr "Page"
+
+msgid "not page-related"
+msgstr "not page-related"
+
+msgid "If the page you want to choose is not available, visit it once on the frontend, so it will be indexed"
+msgstr "If the page you want to choose is not available, visit it once on the frontend, so it will be indexed"
+
+msgid "Create answer"
+msgstr "Create answer"
+
+msgid "Answer for your Question"
+msgstr "Answer for your Question"
+
+msgid "View question"
+msgstr "View question"
+
+msgid "Use existing Answer"
+msgstr "Use existing Answer"
+
+msgid "Enter a Search-Query"
+msgstr "Enter a Search-Query"
+
+msgid "Search for an existing answer and use it as your response"
+msgstr "Search for an existing answer and use it as your response"
+
+msgid "The type of the response (gossip will not be remembered)"
+msgstr "The type of the response (gossip will not be remembered)"
+
+msgid "This answer is page-related"
+msgstr "This answer is page-related"
+
+msgid "Answer deleted"
+msgstr "Answer deleted"
+
+msgid "Answer was already answered"
+msgstr "Answer was already answered"
+
+msgid "Event updated"
+msgstr "Event updated"
+
+msgid "Dismiss"
+msgstr "Dismiss"
+
+msgid "Edit keyword-based event"
+msgstr "Edit keyword-based event"
+
+msgid "Save event"
+msgstr "Save event"
+
+msgid "Edit event"
+msgstr "Edit event"
+
+msgid "Save changes"
+msgstr "Save changes"
+
+msgid "Question deleted"
+msgstr "Question deleted"
+
+msgid "From"
+msgstr "From"
+
+msgid "anonym"
+msgstr "anonym"
+
+msgid "on"
+msgstr "on"
+
+msgid "Use existing answer"
+msgstr "Use existing answer"
+
+msgid "Edit Answer"
+msgstr "Edit Answer"
+
+msgid "Create Answer"
+msgstr "Create Answer"
+
+msgid "View"
+msgstr "View"
+
+msgid "Answered"
+msgstr "Answered"
+
+msgid "Yes"
+msgstr "Yes"
+
+msgid "No"
+msgstr "No"
+
+msgid "Asked"
+msgstr "Asked"
+
+msgid "times"
+msgstr "times"
+
+msgid "User"
+msgstr "User"
+
+msgid "User deleted"
+msgstr "User deleted"
+
+msgid "User information"
+msgstr "User information"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "E-Mail"
+msgstr "E-Mail"
+
+msgid "not defined"
+msgstr "not defined"
+
+msgid "Guest"
+msgstr "Guest"
+
+msgid "Wordpress User"
+msgstr "Wordpress User"
+
+msgid "Support"
+msgstr "Support"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Last messages"
+msgstr "Last messages"
+
+msgid "No messages so far"
+msgstr "No messages so far"
+
+msgid "Welcome to weebotLite"
+msgstr "Welcome to weebotLite"
+
+msgid "We’ve assembled some links to get you started"
+msgstr "We’ve assembled some links to get you started"
+
+msgid "Get Started"
+msgstr "Get Started"
+
+msgid "Customize Your Bot"
+msgstr "Customize Your Bot"
+
+msgid "First Steps"
+msgstr "First Steps"
+
+msgid "Write your first keyword-based answer"
+msgstr "Write your first keyword-based answer"
+
+msgid "Add some support-user"
+msgstr "Add some support-user"
+
+msgid "Talk to your bot"
+msgstr "Talk to your bot"
+
+msgid "More Actions"
+msgstr "More Actions"
+
+msgid "Manage"
+msgstr "Manage"
+
+msgid "Turn spam-protection on or off"
+msgstr "Turn spam-protection on or off"
+
+msgid "See the documentation"
+msgstr "See the documentation"
+
+msgid "At a Glance"
+msgstr "At a Glance"
+
+msgid "Questions"
+msgstr "Questions"
+
+msgid "Answers"
+msgstr "Answers"
+
+msgid "Unanswered"
+msgstr "Unanswered"
+
+msgid "Supporter"
+msgstr "Supporter"
+
+msgid "is installed"
+msgstr "is installed"
+
+msgid "is trying to improve and getting better and better. Help us by informing us about bugs :) If you need help just message your question to our"
+msgstr "is trying to improve and getting better and better. Help us by informing us about bugs :) If you need help just message your question to our"
+
+msgid "Activity"
+msgstr "Activity"
+
+msgid "Recently Answered"
+msgstr "Recently Answered"
+
+msgid "No question was recently answered!"
+msgstr "No question was recently answered!"
+
+msgid "No Answers created!"
+msgstr "No Answers created!"
+
+msgid "Recent Questions"
+msgstr "Recent Questions"
+
+msgid "No Questions asked so far"
+msgstr "No Questions asked so far"
+
+msgid "Create keyword-based Answer"
+msgstr "Create keyword-based Answer"
+
+msgid "Search Questions"
+msgstr "Search Questions"
+
+msgid "questions"
+msgstr "questions"
+
+msgid "Chat"
+msgstr "Chat"
+
+msgid "Active"
+msgstr "Active"
+
+msgid "This will activate the Support-Chat"
+msgstr "This will activate the Support-Chat"
+
+msgid "Footer"
+msgstr "Footer"
+
+msgid "Add the Support-Chat to the bottom of the page"
+msgstr "Add the Support-Chat to the bottom of the page"
+
+msgid "Chat-Log Messages"
+msgstr "Chat-Log Messages"
+
+msgid "This amount of messages will be loaded into the chat-log on initial load"
+msgstr "This amount of messages will be loaded into the chat-log on initial load"
+
+msgid "Page parameter"
+msgstr "Page parameter"
+
+msgid "Remove URL-parameters for page-related answers"
+msgstr "Remove URL-parameters for page-related answers"
+
+msgid "Page hashtag"
+msgstr "Page hashtag"
+
+msgid "Remove URL-hashtag for page-related answers"
+msgstr "Remove URL-hashtag for page-related answers"
+
+msgid "Logged Users"
+msgstr "Logged Users"
+
+msgid "Only logged users"
+msgstr "Only logged users"
+
+msgid "Show Chat only to logged in visitors"
+msgstr "Show Chat only to logged in visitors"
+
+msgid "Support-User"
+msgstr "Support-User"
+
+msgid "Add available Support-User to chat"
+msgstr "Add available Support-User to chat"
+
+msgid "Hide"
+msgstr "Hide"
+
+msgid "Hide chat"
+msgstr "Hide chat"
+
+msgid "Hide Chat for Support-User in frontend"
+msgstr "Hide Chat for Support-User in frontend"
+
+msgid "Popup"
+msgstr "Popup"
+
+msgid "Show questions"
+msgstr "Show questions"
+
+msgid "Show new Support-Messages in frontend"
+msgstr "Show new Support-Messages in frontend"
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Activate Spam Check"
+msgstr "Activate Spam Check"
+
+msgid "Text Length"
+msgstr "Text Length"
+
+msgid "Chars"
+msgstr "Chars"
+
+msgid "Minimum Chars for a text"
+msgstr "Minimum Chars for a text"
+
+msgid "Words"
+msgstr "Words"
+
+msgid "Activate Word Check"
+msgstr "Activate Word Check"
+
+msgid "Included Words"
+msgstr "Included Words"
+
+msgid "One of these words should be in the text (comma separated)"
+msgstr "One of these words should be in the text (comma separated)"
+
+msgid "Excluded Words"
+msgstr "Excluded Words"
+
+msgid "All of these words should not be in the text (comma separated)"
+msgstr "All of these words should not be in the text (comma separated)"
+
+msgid "Excluded Strings"
+msgstr "Excluded Strings"
+
+msgid "All of these strings should not be in the text (comma separated)"
+msgstr "All of these strings should not be in the text (comma separated)"
+
+msgid "Search User"
+msgstr "Search User"
+
+msgid "user"
+msgstr "user"
+
+msgid "There is no supporter online!"
+msgstr "There is no supporter online!"
+
+msgid "no search results for "
+msgstr "no search results for "
+
+msgid " search result "
+msgstr " search result "
+
+msgid " search results "
+msgstr " search results "
+
+msgid "show"
+msgstr "show"
+
+msgid "Email me the answer"
+msgstr "Email me the answer"
+
+msgid "We will email you the answer!"
+msgstr "We will email you the answer!"
+
+msgid "Something went wrong!"
+msgstr "Something went wrong!"
+
+msgid "Your message was blocked!"
+msgstr "Your message was blocked!"
+
+msgid " is answering your question as soon as possible"
+msgstr " is answering your question as soon as possible"
+
+msgid "seen by "
+msgstr "seen by "
+
+msgid "We need your E-Mail-Address!"
+msgstr "We need your E-Mail-Address!"
+
+msgid "Save"
+msgstr "Save"
+
+msgid "Ask us anything"
+msgstr "Ask us anything"
+
+msgid "Support-Chat"
+msgstr "Support-Chat"
+
+msgid "Saved"
+msgstr "Saved"
+
+msgid "here"
+msgstr "here"
+
+msgid "or"
+msgstr "or"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Settings"
+msgstr "Settings"
+
+msgid "Documentation"
+msgstr "Documentation"
+
+msgid "answers"
+msgstr "answers"
+
+msgid "Design"
+msgstr "Design"
+
+msgid "Theme"
+msgstr "Theme"
+
+msgid "Choose your chat-theme"
+msgstr "Choose your chat-theme"
+
+msgid "Shows the User-Avatar and is in different style than the default-theme"
+msgstr "Shows the User-Avatar and is in different style than the default-theme"
+
+msgid "Default theme for the frontend support chat"
+msgstr "Default theme for the frontend support chat"
+
+msgid "This theme uses the template from the default-theme, but the skin is dark"
+msgstr "This theme uses the template from the default-theme, but the skin is dark"
+
+msgid "year"
+msgstr "year"
+
+msgid "month"
+msgstr "month"
+
+msgid "week"
+msgstr "week"
+
+msgid "day"
+msgstr "day"
+
+msgid "hour"
+msgstr "hour"
+
+msgid "minute"
+msgstr "minute"
+
+msgid "second"
+msgstr "second"
+
+msgid "s"
+msgstr "s"
+
+msgid "ago"
+msgstr "ago"
+
+msgid "just now"
+msgstr "just now"
+
+msgid "Add the Support-Chat to the bottom of the page. (disable this, if you want to add the Support-Chat via shortcode)"
+msgstr "Add the Support-Chat to the bottom of the page. (disable this, if you want to add the Support-Chat via shortcode)"
+
+msgid "The width of the support-chat as CSS value (eg. 30wh, 300px, 20%)"
+msgstr "The width of the support-chat as CSS value (eg. 30wh, 300px, 20%)"
+
+msgid "Chat width"
+msgstr "Chat width"
+
+msgid "Send a GIF"
+msgstr "Send a GIF"
+
+msgid "Send a Smiley"
+msgstr "Send a Smiley"
+
+msgid "Upload a file"
+msgstr "Upload a file"
+
+msgid "Send a Screenshot"
+msgstr "Send a Screenshot"
+
+msgid "Screenshot"
+msgstr "Screenshot"
+
+msgid "Send"
+msgstr "Send"
+
+msgid "There went something wrong!"
+msgstr "There went something wrong!"
+
+msgid "Write a reply..."
+msgstr "Write a reply..."
+
+msgid "You sent a file!"
+msgstr "You sent a file!"
+
+msgid "You sent some files!"
+msgstr "You sent some files!"
+
+msgid "This file is too big!"
+msgstr "This file is too big!"
+
+msgid "Some files are too big!"
+msgstr "Some files are too big!"
+
+msgid "Uploading ..."
+msgstr "Uploading ..."
+
+msgid "Download file"
+msgstr "Download file"
+
+msgid "Mark an area"
+msgstr "Mark an area"
+
+msgid "Sending screenshot ..."
+msgstr "Sending screenshot ..."
+
+msgid "Welcome Message"
+msgstr "Welcome Message"
+
+msgid "The welcome message for new users with an empty chat-log"
+msgstr "The welcome message for new users with an empty chat-log"
+
+msgid "Show all Support-Users for new users with an empty chat-log"
+msgstr "Show all Support-Users for new users with an empty chat-log"
+
+msgid "Show Supporter"
+msgstr "Show Supporter"
+
+msgid "Last Login"
+msgstr "Last Login"
+
+msgid "is online"
+msgstr "is online"
+
+msgid "Add new Support-User"
+msgstr "Add new Support-User"
+
+msgid "Track online users"
+msgstr "Track online users"
+
+msgid "Seconds"
+msgstr "Seconds"
+
+msgid "After this amount of seconds the chat will be visible"
+msgstr "After this amount of seconds the chat will be visible"
+
+msgid "http://shop.weedesign.de/wordpress/plugins/weebot-your-custom-support-chat-bot.html"
+msgstr "http://shop.weedesign.de/wordpress/plugins/weebot-your-custom-support-chat-bot.html"
+
+msgid "Upgrade to Premium"
+msgstr "Upgrade to Premium"
+
+msgid "Why we recommend you the Premium-Version"
+msgstr "Why we recommend you the Premium-Version"
+
+msgid "Our Premium-Plugin weebot brings AI to your website. You never have to answer a simple question again, if you allow the Support-Chat-Bot to save it."
+msgstr "Our Premium-Plugin weebot brings AI to your website. You never have to answer a simple question again, if you allow the Support-Chat-Bot to save it."
+
+msgid "Some additional functions of weebot are:"
+msgstr "Some additional functions of weebot are:"
+
+msgid "weebot gets more clever with each answered Message"
+msgstr "weebot gets more clever with each answered Message"
+
+msgid "Auto-Answering similar Questions/Messages"
+msgstr "Auto-Answering similar Questions/Messages"
+
+msgid "Create keyword-based Answers, which can already filter a lot of messages"
+msgstr "Create keyword-based Answers, which can already filter a lot of messages"
+
+msgid "Include the Support-Chat to multiple Domains (Crossdomain)"
+msgstr "Include the Support-Chat to multiple Domains (Crossdomain)"
+
+msgid "Fallback Solutions (E-Mail and Search-Results)"
+msgstr "Fallback Solutions (E-Mail and Search-Results)"
+
+msgid "Allow Screenshots and File-Uploads"
+msgstr "Allow Screenshots and File-Uploads"
+
+msgid "Upgrade now"
+msgstr "Upgrade now"
+
+msgid "Advantages of the Premium-Version"
+msgstr "Advantages of the Premium-Version"

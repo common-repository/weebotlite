@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Provide a public area view for gossip for the support-chat
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+?>
+<div class="answer type-gossip gossip" id="<?php echo $this->plugin_name."_".$parameter["question"]; ?>_answer">
+	<div class="message">
+		<img src="<?php echo get_avatar_url($parameter["answer"]->user); ?>" alt="" class="profile" />
+		<?php echo esc_html($parameter["answer"]->action); ?>
+	</div>
+</div>

@@ -1,0 +1,733 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+msgid "Create"
+msgstr "Erstellen"
+
+msgid "Question was already answered"
+msgstr "Anfrage wurde bereits beantwortet"
+
+msgid "Dismiss this notice"
+msgstr "Meldung schließen"
+
+msgid "Question answered"
+msgstr "Anfrage beantwortet"
+
+msgid "All"
+msgstr "Alle"
+
+msgid "Keywords"
+msgstr "Keywords"
+
+msgid "Search Answers"
+msgstr "Durchsuche Antworten"
+
+msgid "Select bulk action"
+msgstr "Aktion wählen"
+
+msgid "Bulk Actions"
+msgstr "Gruppenaktion"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Apply"
+msgstr "Anwenden"
+
+msgid "events"
+msgstr "Anfragen"
+
+msgid "Current Page"
+msgstr "Aktuelle Seite"
+
+msgid "of"
+msgstr "von"
+
+msgid "Select All"
+msgstr "Alle wählen"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Select"
+msgstr "Wählen"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Trash"
+msgstr "Löschen"
+
+msgid "Gossip"
+msgstr "Tratsch"
+
+msgid "Answer"
+msgstr "Antwort"
+
+msgid "Question"
+msgstr "Frage"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "File"
+msgstr "Datei"
+
+msgid "Current page"
+msgstr "Aktuelle Seite"
+
+msgid "No answers found"
+msgstr "Keine Antwort gefunden"
+
+msgid "Search Results"
+msgstr "Suchresultate"
+
+msgid "Sort by type"
+msgstr "Nach Type sortieren"
+
+msgid "Sort by message"
+msgstr "Nach Inhalt sortieren"
+
+msgid "Use this answer"
+msgstr "Diese Antwort benutzen"
+
+msgid "Create keyword-based answer"
+msgstr "Keywordbasierte Antwort erstellen"
+
+msgid "The words, which should be in the question (space separated)"
+msgstr "Wörter (Keywords), die in der Anfrage gefunden werden sollen (durch \"Leerzeichen getrennt)"
+
+msgid "Minimum hit-count"
+msgstr "Treffer (mindestens)"
+
+msgid "Minimum hit-count of keywords that match with words of the question"
+msgstr "Minimale Treffer von Keywords, die in der Anfrage gefunden werden."
+
+msgid "Minimum words"
+msgstr "Wörter (mindestens)"
+
+msgid "Minimum"
+msgstr "Minimal"
+
+msgid "Minimum amount of words, which should be included in the question"
+msgstr "Minimale Anzahl von Wörtern, die in der Anfrage enthalten sein müssen."
+
+msgid "Maximum words"
+msgstr "Wörter (maximal)"
+
+msgid "Maximum"
+msgstr "Maximal"
+
+msgid "Maximum amount of words, which should be included in the question"
+msgstr "Maximale Anzahl von Wörtern, die in der Anfrage enthalten sein dürfen"
+
+msgid "The type of the response"
+msgstr "Die Art der Antwort/Aktion"
+
+msgid "The file for the response"
+msgstr "Die Datei für die Antwort/Aktion"
+
+msgid "Action"
+msgstr "Aktion"
+
+msgid "The answer, question or filename"
+msgstr "Die Antwort, Frage oder ein Dateiname."
+
+msgid "Page"
+msgstr "Seite"
+
+msgid "not page-related"
+msgstr "nicht seitenbezogen"
+
+msgid "If the page you want to choose is not available, visit it once on the \"frontend, so it will be indexed"
+msgstr "Falls die Aktion seitenbezogen sein soll, kann hier die Seite gewählt werden.\" Wenn die Seite nicht in der Auswahl erscheint, muss diese einmalig im \"Frontend angewählt werden, sodass sie von weebotLite indexiert wird."
+
+msgid "Create answer"
+msgstr "Antwort erstellen"
+
+msgid "Answer for your Question"
+msgstr "Antwort zu Ihrer Anfrage"
+
+msgid "View question"
+msgstr "Anfrage öffnen"
+
+msgid "Use existing Answer"
+msgstr "Bestehende Antwort wählen"
+
+msgid "Enter a Search-Query"
+msgstr "Suchbegriff eingeben"
+
+msgid "Search for an existing answer and use it as your response"
+msgstr "Suche nach einer bestehenden Antwort."
+
+msgid "The type of the response (gossip will not be remembered)"
+msgstr "Die Art der Aktion/Antwort - Tratsch wird von weebotLite nicht gespeichert"
+
+msgid "This answer is page-related"
+msgstr "Diese Antwort ist seitenbezogen"
+
+msgid "Answer deleted"
+msgstr "Antwort gelöscht"
+
+msgid "Answer was already answered"
+msgstr "Anfrage wurde bereits beantwortet"
+
+msgid "Event updated"
+msgstr "Änderungen wurden gespeichert."
+
+msgid "Dismiss"
+msgstr "Schließen"
+
+msgid "Edit keyword-based event"
+msgstr "Keywordbasierte Antwort bearbeiten"
+
+msgid "Save event"
+msgstr "Antwort speichern"
+
+msgid "Edit event"
+msgstr "Antwort bearbeiten"
+
+msgid "Save changes"
+msgstr "Änderungen speichern"
+
+msgid "Question deleted"
+msgstr "Anfrage gelöscht"
+
+msgid "From"
+msgstr "Von"
+
+msgid "anonym"
+msgstr "Anonym"
+
+msgid "on"
+msgstr "auf"
+
+msgid "Use existing answer"
+msgstr "Bestehende Antwort verwenden"
+
+msgid "Edit Answer"
+msgstr "Antwort bearbeiten"
+
+msgid "Create Answer"
+msgstr "Antwort erstellen"
+
+msgid "View"
+msgstr "Öffnen"
+
+msgid "Answered"
+msgstr "Beantwortet"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "Asked"
+msgstr "Gefragt"
+
+msgid "times"
+msgstr "mal"
+
+msgid "User"
+msgstr "Benutzer"
+
+msgid "User deleted"
+msgstr "Benutzer gelöscht"
+
+msgid "User information"
+msgstr "Benutzerdaten"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "E-Mail"
+msgstr "E-Mail"
+
+msgid "not defined"
+msgstr "nicht gespeichert"
+
+msgid "Guest"
+msgstr "Gast"
+
+msgid "Wordpress User"
+msgstr "Wordpress Nutzer"
+
+msgid "Support"
+msgstr "Support"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Last messages"
+msgstr "Letzte Anfragen"
+
+msgid "No messages so far"
+msgstr "Bisher keine Anfragen"
+
+msgid "Welcome to weebotLite"
+msgstr "Willkommen bei weebotLite"
+
+msgid "We’ve assembled some links to get you started"
+msgstr "Wir haben einige Informationen gesammelt um den Start zu erleichtern"
+
+msgid "Get Started"
+msgstr "Starte jetzt"
+
+msgid "Customize Your Bot"
+msgstr "Bot Einstellungen"
+
+msgid "First Steps"
+msgstr "Erste Schritte"
+
+msgid "Write your first keyword-based answer"
+msgstr "Schreibe eine keywordbasierte Antwort/Aktion"
+
+msgid "Add some support-user"
+msgstr "Füge Support-User hinzu"
+
+msgid "Talk to your bot"
+msgstr "Schreibe mit dem Bot"
+
+msgid "More Actions"
+msgstr "Weitere Aktionen"
+
+msgid "Manage"
+msgstr "Verwalte"
+
+msgid "Search"
+msgstr "Suchen"
+
+msgid "Turn spam-protection on or off"
+msgstr "Spam-Schutz aktivieren"
+
+msgid "See the documentation"
+msgstr "Dokumentation lesen"
+
+msgid "At a Glance"
+msgstr "Auf einen Blick"
+
+msgid "Questions"
+msgstr "Anfragen"
+
+msgid "Answers"
+msgstr "Antworten"
+
+msgid "Unanswered"
+msgstr "Unbeantwortet"
+
+msgid "Supporter"
+msgstr "Supporter"
+
+msgid "is installed"
+msgstr "ist installiert"
+
+msgid "is trying to improve and getting better and better. Help us by informing us \"about bugs :) If you need help just message your question to our"
+msgstr "versucht sich stetig zu verbessern. Informiere uns gerne über bestehende \"Probleme oder schreibe unserem"
+
+msgid "Activity"
+msgstr "Aktivität"
+
+msgid "Recently Answered"
+msgstr "Kürzlich beantwortet"
+
+msgid "No question was recently answered!"
+msgstr "Zuletzt wurden keine Anfragen beantwortet!"
+
+msgid "No Answers created!"
+msgstr "Keine Antworten erstellt!"
+
+msgid "Recent Questions"
+msgstr "Kürzliche Anfragen"
+
+msgid "No Questions asked so far"
+msgstr "Bisher wurden keine Anfragen gestellt"
+
+msgid "Create keyword-based Answer"
+msgstr "Keywordbasierte Antwort erstellen"
+
+msgid "Search Questions"
+msgstr "Anfragen durchsuchen"
+
+msgid "questions"
+msgstr "Anfragen"
+
+msgid "Chat"
+msgstr "Chat"
+
+msgid "Active"
+msgstr "Aktiv"
+
+msgid "This will activate the Support-Chat"
+msgstr "(De)Aktiviert den Support-Chat"
+
+msgid "Footer"
+msgstr "Footer"
+
+msgid "Add the Support-Chat to the bottom of the page"
+msgstr "Fügt den Support-Chat im Footer des Frontends ein"
+
+msgid "Chat-Log Messages"
+msgstr "Nachrichtenverlauf"
+
+msgid "This amount of messages will be loaded into the chat-log on initial load"
+msgstr "Anzahl der Nachrichten, die beim Start in den Chat geladen werden"
+
+msgid "Page parameter"
+msgstr "Seiten-Parameter"
+
+msgid "Remove URL-parameters for page-related answers"
+msgstr "URL-Parameter für seitenbezogene Antworten entfernen"
+
+msgid "Page hashtag"
+msgstr "Seiten-Hash"
+
+msgid "Remove URL-hashtag for page-related answers"
+msgstr "URL-Hash für seitenbezogene Antworten entfernen"
+
+msgid "Logged Users"
+msgstr "Eingeloggte Nutzer"
+
+msgid "Only logged users"
+msgstr "Nur eingeloggte Nutzer"
+
+msgid "Show Chat only to logged in visitors"
+msgstr "Der Support-Chat wird nur für angemeldete Benutzer eingeblendet"
+
+msgid "Support-User"
+msgstr "Support-User"
+
+msgid "Add available Support-User to chat"
+msgstr "Fügt die aktiven (online) Support-User zum Chat hinzu"
+
+msgid "Hide"
+msgstr "Verstecken"
+
+msgid "Hide chat"
+msgstr "Chat verstecken"
+
+msgid "Hide Chat for Support-User in frontend"
+msgstr "Versteckt den Chat im Frontend für Support-User"
+
+msgid "Popup"
+msgstr "Popup"
+
+msgid "Show questions"
+msgstr "Zeige Anfragen"
+
+msgid "Show new Support-Messages in frontend"
+msgstr "Zeigt neue Support-Anfragen für Support im Frontend"
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Activate Spam Check"
+msgstr "Aktiviert den Spam-Schutz"
+
+msgid "Text Length"
+msgstr "Textlänge"
+
+msgid "Chars"
+msgstr "Zeichen"
+
+msgid "Minimum Chars for a text"
+msgstr "Soviele Zeichen muss eine Anfrage mindestens haben"
+
+msgid "Words"
+msgstr "Wörter"
+
+msgid "Activate Word Check"
+msgstr "Aktiviert Wort-Prüfung"
+
+msgid "Included Words"
+msgstr "Vorhandene Wörter"
+
+msgid "One of these words should be in the text (comma separated)"
+msgstr "Eines dieser Wörter muss in der Anfrage gefunden werden (kommagetrennt)"
+
+msgid "Excluded Words"
+msgstr "Verstoßene Wörter"
+
+msgid "All of these words should not be in the text (comma separated)"
+msgstr "Keines dieser Wörter darf in der Anfrage gefunden werden (kommagetrennt)"
+
+msgid "Excluded Strings"
+msgstr "Verstoßene Zeichenketten"
+
+msgid "All of these strings should not be in the text (comma separated)"
+msgstr "Keine dieser Zeichenketten darf in der Anfrage vorkommen (kommagetrennt)"
+
+msgid "Search User"
+msgstr "Benutzer durchsuchen"
+
+msgid "user"
+msgstr "Benutzer"
+
+msgid "There is no supporter online!"
+msgstr "Es ist kein Supporter online!"
+
+msgid "no search results for "
+msgstr "keine Sucheresultate für"
+
+msgid " search result "
+msgstr " Suchresultat "
+
+msgid " search results "
+msgstr " Suchresultate "
+
+msgid "show"
+msgstr "anzeigen"
+
+msgid "Email me the answer"
+msgstr "Antwort an mich emailen"
+
+msgid "We will email you the answer!"
+msgstr "Wir werden Dir die Antwort mailen!"
+
+msgid "Something went wrong!"
+msgstr "Etwas ist schief gelaufen!"
+
+msgid "Your message was blocked!"
+msgstr "Deine Nachricht wurde blockiert!"
+
+msgid " is answering your question as soon as possible"
+msgstr " beantwortet Deine Frage so schnell wie möglich"
+
+msgid "seen by "
+msgstr "gesehen von"
+
+msgid "We need your E-Mail-Address!"
+msgstr "Wir benötigen Deine Email-Addresse"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Ask us anything"
+msgstr "Schreibe uns Dein Anliegen oder Deine Frage und wir werden Dir schnellstmöglich antworten :)"
+
+msgid "Support-Chat"
+msgstr "Support-Chat"
+
+msgid "If the page you want to choose is not available, visit it once on the frontend, so it will be indexed"
+msgstr "Falls die Aktion seitenbezogen sein soll, kann hier die Seite gewählt werden. Wenn die Seite nicht in der Auswahl erscheint, muss diese einmalig im Frontend angewählt werden, sodass sie von \"weebotLite\" indexiert wird."
+
+msgid "is trying to improve and getting better and better. Help us by informing us about bugs :) If you need help just message your question to our"
+msgstr "versucht sich stetig zu verbessern. Sende uns gerne Problemberichte oder schreibe direkt an unseren"
+
+msgid "Saved"
+msgstr "Gespeichert"
+
+msgid "here"
+msgstr "hier"
+
+msgid "or"
+msgstr "oder"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Documentation"
+msgstr "Dokumentation"
+
+msgid "answers"
+msgstr "Antworten"
+
+msgid "Design"
+msgstr "Design"
+
+msgid "Theme"
+msgstr "Theme"
+
+msgid "Choose your chat-theme"
+msgstr "Das Theme des Support-Chats"
+
+msgid "Shows the User-Avatar and is in different style than the default-theme"
+msgstr "Zeigt ein Profilbild des aktiven Supporters und verwendet etwas andere Styles"
+
+msgid "Default theme for the frontend support chat"
+msgstr "Standard-Theme für den Support-Chat (im Frontend)"
+
+msgid "This theme uses the template from the default-theme, but the skin is dark"
+msgstr "Dieses Theme baut auf dem default-Theme auf, aber ist im dunklen Style"
+
+msgid "year"
+msgstr "Jahre"
+
+msgid "month"
+msgstr "Monate"
+
+msgid "week"
+msgstr "Woche"
+
+msgid "day"
+msgstr "Tage"
+
+msgid "hour"
+msgstr "Stunde"
+
+msgid "minute"
+msgstr "Minute"
+
+msgid "second"
+msgstr "Sekunde"
+
+msgid "s"
+msgstr "n"
+
+msgid "ago"
+msgstr "zuvor"
+
+msgid "just now"
+msgstr "gerade eben"
+
+msgid "Bring AI to your website and generate your custom support chat bot"
+msgstr "Bringen Sie künstliche Intelligenz auf Ihre Website mit unserem Support-Bot"
+
+msgid "Add the Support-Chat to the bottom of the page. (disable this, if you want to add the Support-Chat via shortcode)"
+msgstr "Fügt den Support-Chat den Seiten hinzu. (Diese Einstellung deaktivieren, wenn der Support-Chat via Shortcode zu einzelnen Seiten hinzugefügt werden soll)"
+
+msgid "The width of the support-chat as CSS value (eg. 30wh, 300px, 20%)"
+msgstr "Die Breite des Support-Chats als CSS-Wert (z.B. 30wh, 300px, 20%)"
+
+msgid "Chat width"
+msgstr "Chat Breite"
+
+msgid "Send a GIF"
+msgstr "GIF senden"
+
+msgid "Send a Smiley"
+msgstr "Smiley senden"
+
+msgid "Upload a file"
+msgstr "Datei hochladen"
+
+msgid "Send a Screenshot"
+msgstr "Screenshot machen"
+
+msgid "Screenshot"
+msgstr "Screenshot"
+
+msgid "Send"
+msgstr "Senden"
+
+msgid "There went something wrong!"
+msgstr "Da ist etwas schief gelaufen!"
+
+msgid "Write a reply..."
+msgstr "Schreibe uns etwas..."
+
+msgid "You sent a file!"
+msgstr "Datei gesendet!"
+
+msgid "You sent some files!"
+msgstr "Dateien gesendet!"
+
+msgid "This file is too big!"
+msgstr "Datei ist zu groß!"
+
+msgid "Some files are too big!"
+msgstr "Einige Dateien sind zu groß!"
+
+msgid "Uploading ..."
+msgstr "Dateiübertragung läuft ..."
+
+msgid "Download file"
+msgstr "Datei herunterladen"
+
+msgid "Mark an area"
+msgstr "Markiere einen Bereich"
+
+msgid "Sending screenshot ..."
+msgstr "Screenshot wird gesendet ..."
+
+msgid "Welcome Message"
+msgstr "Willkommens-Nachricht"
+
+msgid "The welcome message for new users with an empty chat-log"
+msgstr "Nachricht für neue User mit einem leeren Chat-Verlauf"
+
+msgid "Show all Support-Users for new users with an empty chat-log"
+msgstr "Zeige alle Support-User für neue User im Chat (mit leerem Chat-Verlauf)"
+
+msgid "Show Supporter"
+msgstr "Zeige Supporter"
+
+msgid "Last Login"
+msgstr "Zuletzt online"
+
+msgid "These supporters are here to help you"
+msgstr "Unsere Supporter sind hier um Ihnen zu helfen"
+
+msgid "is online"
+msgstr "ist online"
+
+msgid "Add new Support-User"
+msgstr "Neuen Support-User wählen"
+
+msgid "Track online users"
+msgstr "Besucher, die online sind tracken/speichern"
+
+msgid "Seconds"
+msgstr "Sekunden"
+
+msgid "After this amount of seconds the chat will be visible"
+msgstr "Nach Ablauf dieser Zeit (in Sekunden) wird der Chat sichtbar"
+
+msgid "http://shop.weedesign.de/wordpress/plugins/weebot-your-custom-support-chat-bot.html"
+msgstr "http://shop.weedesign.de/wordpress/plugins/weebot-der-persoenliche-support-chat-bot.html"
+
+msgid "Upgrade to Premium"
+msgstr "Zur Premium-Version"
+
+msgid "Why we recommend you the Premium-Version"
+msgstr "Warum wir die Premium-Version empfehlen"
+
+msgid "Our Premium-Plugin weebot brings AI to your website. You never have to answer a simple question again, if you allow the Support-Chat-Bot to save it."
+msgstr "Unser Premium Plugin weebot bringt künstliche Intelligenz auf Ihre Website und ermöglicht die automatische Beantwortung vieler Support-Anfragen."
+
+msgid "Some additional functions of weebot are:"
+msgstr "Einige Zusatzfunktionen der Premium-Version weebot:"
+
+msgid "weebot gets more clever with each answered Message"
+msgstr "weebot lernt mit jeder beantworteten Anfrage und kann automatisch Antworten"
+
+msgid "Auto-Answering similar Questions/Messages"
+msgstr "Automatisches Antworten auf gleiche Anfragen/Nachrichten"
+
+msgid "Create keyword-based Answers, which can already filter a lot of messages"
+msgstr "Ermöglicht die Generierung von keyword-basierten Antworten, dabei können große Teile der Anfragen abgefangen und automatisch beantwortet werden"
+
+msgid "Include the Support-Chat to multiple Domains (Crossdomain)"
+msgstr "Erlaubt das Einbinden auf beliebig vielen Domains (Crossdomain)"
+
+msgid "Fallback Solutions (E-Mail and Search-Results)"
+msgstr "Fallback-Lösungen, wenn kein Supporter online ist (E-Mail und Suchergebnisse)"
+
+msgid "Allow Screenshots and File-Uploads"
+msgstr "Ermöglicht Screenshots und Datei-Transfers"
+
+msgid "Upgrade now"
+msgstr "Jetzt upgraden"
+
+msgid "Advantages of the Premium-Version"
+msgstr "Vorteile der Premium-Version"

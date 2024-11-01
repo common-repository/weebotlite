@@ -1,0 +1,11 @@
+--- weebotLite dark theme (parent theme default)
+--- ---------------------------
+--- @param		template		Name of Template
+--- @param		css				Filename of stylesheet
+--- @param		js				Filename of stylesheet
+--- @param		description		Description for this theme
+--- ---------------------------
+--- Note:	Use of parameter
+---       	Parameter should be seperated to value by tabluator:tabulator ( \t:\t )
+template	:	default
+description	:	This theme uses the template from the default-theme, but the skin is dark

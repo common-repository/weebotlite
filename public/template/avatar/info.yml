@@ -1,0 +1,10 @@
+--- weebotLite avatar theme
+--- ---------------------------
+--- @param		template		Name of Template
+--- @param		css				Filename of stylesheet
+--- @param		js				Filename of stylesheet
+--- @param		description		Description for this theme
+--- ---------------------------
+--- Note:	Use of parameter
+---       	Parameter should be seperated to value by tabluator:tabulator ( \t:\t )
+description	:	Shows the User-Avatar and is in different style than the default-theme

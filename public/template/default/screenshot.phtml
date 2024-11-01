@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * Provide a public area view for the screenshot
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+?>
+
+<?php
+
+	/*
+	*	Get page
+	*/
+	$page = $this->get_page_by("id",$parameter["screenshot"]->page);
+	
+	/*
+	*	Window sizes
+	*/
+	$size_document = explode(":",$parameter["screenshot"]->document);
+	$size_window = explode(":",$parameter["screenshot"]->window);
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><?php esc_attr_e( 'Screenshot', $this->plugin_name ); ?>: </title>
+</head>
+<body>
+	<div style="
+		width:<?php echo $parameter["screenshot"]->width; ?>px;
+		height:<?php echo $parameter["screenshot"]->height; ?>px;
+		overflow:hidden;
+		position:relative;
+	">
+		<iframe src="<?php echo $page->page; ?>" frameborder="0" style="
+			position:absolute;
+			top:-<?php echo $parameter["screenshot"]->y; ?>px;
+			left:-<?php echo $parameter["screenshot"]->x; ?>px;
+			width:<?php echo $size_document[0]; ?>px;
+			height:<?php echo $size_document[1]; ?>px;
+		"></iframe>
+	</div>
+</body>
+</html>

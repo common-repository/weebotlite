@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Provide a public area view for the "settings"-container for the support-chat
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+	/* 
+	*	get user data
+	*/
+	$user_data = $this->user_data();
+	if($user_data!==false) {
+		$user_data_name = (isset($user_data->data)) ? $user_data->data->display_name : $user_data->name;
+		$user_data_email = (isset($user_data->data)) ? $user_data->data->user_email : $user_data->email;
+	}
+
+?>
+<div class="settings hidden" data-question-id="">
+	<div class="info"><?php esc_attr_e( 'We need your E-Mail-Address!', $this->plugin_name ); ?></div>
+	<input type="text" name="name" id="<?php echo $this->plugin_name; ?>-user-name" placeholder="<?php esc_attr_e( 'Name', $this->plugin_name ); ?>" <?php if($user_data!==false) { ?> value="<?php echo $user_data_name; ?>" <?php } ?> />
+	<input type="email" name="email" id="<?php echo $this->plugin_name; ?>-user-email" placeholder="<?php esc_attr_e( 'E-Mail', $this->plugin_name ); ?>" <?php if($user_data!==false) { ?> value="<?php echo $user_data_email; ?>" <?php } ?> />
+	<div class="save"><?php esc_attr_e( 'Save', $this->plugin_name ); ?></div>
+	<div class="close">x</div>
+</div>

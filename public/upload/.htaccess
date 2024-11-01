@@ -1,0 +1,5 @@
+# weebotLite/admin/template
+# deny direct access to files in this directory
+order deny,allow
+deny  from all
+allow from localhost

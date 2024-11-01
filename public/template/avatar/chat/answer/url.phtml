@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Provide a public area view for URLs as answer for the support-chat
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/public/template
+ */
+ 
+?>
+<div class="answer type-url url" id="<?php echo $this->plugin_name."_".$parameter["question"]; ?>_answer">
+	<div class="message">
+		<img src="<?php echo get_avatar_url($parameter["answer"]->user); ?>" alt="" class="profile" />
+		<a href="<?php echo esc_html($parameter["answer"]->action); ?>" target="_blank"><?php echo esc_html($parameter["answer"]->action); ?></a>
+	</div>
+</div>

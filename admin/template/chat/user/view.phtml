@@ -1,0 +1,126 @@
+<?php
+
+/**
+ * Provide a admin view for user data
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/admin/template
+ */
+ 
+	/* 
+	*	load user data
+	*/
+	$user_data = $this->user_data($_GET["post"]);
+
+?>
+<h2 class="nav-tab-wrapper"><?php esc_attr_e( 'User information', $this->plugin_name ); ?></h2>
+<table class="form-table">
+<tbody>
+	<tr>
+		<th scope="row"><span><?php esc_attr_e( 'Name', $this->plugin_name ); ?></span></th>
+		<td> 
+			<?php
+				if($user_data->user==-1) {
+					if(!empty($user_data->name)) {
+						echo esc_html($user_data->name);
+					} else {
+						esc_attr_e( 'anonym', $this->plugin_name );
+					}
+				} else {
+					if ($wp_user_data = get_userdata($user_data->user)) {
+						echo $wp_user_data->data->display_name;
+					} else {
+						esc_attr_e( 'anonym', $this->plugin_name );
+					}
+				}
+			?>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row"><span><?php esc_attr_e( 'E-Mail', $this->plugin_name ); ?></span></th>
+		<td> 
+			<?php
+				if($user_data->user==-1) {
+					if(!empty($user_data->email)) {
+						echo esc_html($user_data->email);
+					} else {
+						esc_attr_e( 'not defined', $this->plugin_name );
+					}
+				} else {
+					if ($wp_user_data = get_userdata($user_data->user)) {
+						echo $wp_user_data->data->user_email;
+					} else {
+						esc_attr_e( 'not defined', $this->plugin_name );
+					}
+				}
+			?>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row"><span><?php esc_attr_e( 'Type', $this->plugin_name ); ?></span></th>
+		<td> 
+			<?php
+				switch($user_data->type) {
+					case "session":
+						esc_attr_e( 'Guest', $this->plugin_name ); 
+					break;
+					case "user":
+						esc_attr_e( 'Wordpress User', $this->plugin_name );
+					break;
+					case "support":
+						esc_attr_e( 'Support', $this->plugin_name );
+					break;
+				}
+			?>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row"><span><?php esc_attr_e( 'Online', $this->plugin_name ); ?></span></th>
+		<td> 
+			<abbr title="<?php echo $user_data->online; ?>"><?php echo date('Y.m.d H:i:s', $user_data->online); ?></abbr>
+		</td>
+	</tr>
+</tbody>
+</table>
+<?php 
+	/* 
+	*	load chat log if this user is no supporter
+	*/
+	if($user_data->type!="support") { 
+	?>
+		<h2 class="nav-tab-wrapper"><?php esc_attr_e( 'Last messages', $this->plugin_name ); ?></h2>
+		<?php
+			/* 
+			*	get plugin options
+			*/
+			$options = get_option($this->plugin_name,$this->default_options());
+			
+			/* 
+			*	get user log
+			*/
+			$start = (isset($_GET["start"])) ? $_GET["start"] : 0;
+			$user_log = $this->user_log($start,$options["chat:messages:limit"],$_GET["post"]);
+			
+			if($user_log!==false) {
+				?>
+				<div id="activity-widget">
+					<div id="latest-comments" class="activity-block">
+						<ul id="the-comment-list" data-wp-lists="list:comment">
+							<?php
+								foreach($user_log as $log) { 
+									$question = $this->get_question_by_id($log->question);
+									$this->template("chat/question/question",array("question"=>$question,"user"=>$user_data));
+								}
+							?>
+						</ul>
+					</div>
+				</div>
+				<?php
+			} else {
+				?><p><?php esc_attr_e( 'No messages so far', $this->plugin_name ); ?></p><?php
+			}
+		}
+	?>

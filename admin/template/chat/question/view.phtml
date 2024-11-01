@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * Provide a admin view for question data
+ *
+ * @link       http://www.weedesign.de/weebotLite.html
+ * @since      1.0.0
+ *
+ * @package    weebotLite
+ * @subpackage weebotLite/admin/template
+ */
+ 
+	/* 
+	*	load question data
+	*/
+	$question = $this->get_question_by_id($_GET["post"]);
+	
+	/* 
+	*	load answer data
+	*/
+	$answer = $this->get_answer_by_question($question->id);
+	
+	/* 
+	*	load user data
+	*/
+	$this_user = $this->user_data($question->user);
+	$this_name = (isset($this_user->data)) ? $this_user->data->display_name : $this_user->name;
+	
+?>
+<h2 class="nav-tab-wrapper"><?php esc_attr_e( 'View question', $this->plugin_name ); ?></h2>
+<table class="form-table">
+	<tbody>
+		<tr>
+			<th scope="row"><span><?php esc_attr_e( 'Date', $this->plugin_name ); ?></span></th>
+			<td> 
+				<span><?php echo str_replace(" ","<br />",$question->time); ?></span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><span><?php esc_attr_e( 'Question', $this->plugin_name ); ?></span></th>
+			<td> 
+				<?php
+					if(!empty($question->question)) {
+						?><span><?php
+							echo esc_html($question->question);
+						?></span><?php
+					}
+					if(!empty($question->files)) {
+						$this->template("chat/question/question/files",array("ids"=>$question->files));
+					}
+					if(!empty($question->screenshot)) {
+						$this->template("chat/question/question/screenshot",array("id"=>$question->screenshot));
+					}
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><span><?php esc_attr_e( 'Answered', $this->plugin_name ); ?></span></th>
+			<td> 
+				<span>
+				<?php 
+					if($question->answered==1) { 
+						esc_attr_e( 'Yes', $this->plugin_name );
+					} else {
+						esc_attr_e( 'No', $this->plugin_name );
+					}
+				?>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><span><?php esc_attr_e( 'Answer', $this->plugin_name ); ?></span></th>
+			<td> 
+				<span>
+					<?php 
+						if($answer===false) {
+							?><a class="button" href="<?php echo admin_url( 'admin.php?page=' . $this->plugin_name . '-answers&amp;action=create&amp;post='.$question->id ); ?>"><?php esc_attr_e( 'Create Answer', $this->plugin_name ); ?></a><?php
+						} else {
+							?><a class="button" href="<?php echo admin_url( 'admin.php?page=' . $this->plugin_name . '-answers&amp;action=edit&amp;post='.$questionAnswer[0]->id ); ?>"><?php esc_attr_e( 'Edit Answer', $this->plugin_name ); ?></a><?php
+						}
+					?>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><span><?php esc_attr_e( 'Asked', $this->plugin_name ); ?></span></th>
+			<td> 
+				<span>
+				<?php 
+					echo $question->counter." ";
+					esc_attr_e( 'times', $this->plugin_name );
+				?>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><span><?php esc_attr_e( 'User', $this->plugin_name ); ?></span></th>
+			<td>
+				<a href="<?php echo admin_url( 'admin.php?page=' . $this->plugin_name . '-user&amp;action=view&amp;post='.$question->user ); ?>">
+					<?php if($this_name=="") { esc_attr_e( 'anonym', $this->plugin_name ); } else { echo esc_html($this_name); } ?>
+				</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
